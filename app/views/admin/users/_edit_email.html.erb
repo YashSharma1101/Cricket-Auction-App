@@ -1,0 +1,6 @@
+<div class="edit-full-name">
+  <%= form_for(user, url: update_email_admin_user_path(user), remote: true, method: :patch) do |f| %>
+    <%= f.text_field :email %>
+    <%= f.submit 'Update' %>
+  <% end %>
+</div>

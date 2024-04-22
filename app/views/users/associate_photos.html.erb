@@ -1,0 +1,13 @@
+<!-- app/views/users/associate_photos.html.erb -->
+
+<h1>Associate Photos</h1>
+
+<% @users.each do |user| %>
+  <div>
+    <p><strong><%= user.full_name %></strong></p>
+    <%= form_for user, url: associate_photo_user_path(user), method: :patch, multipart: true do |f| %>
+      <%= f.file_field :photo_attachment %>
+      <%= f.submit "Associate Photo" %>
+    <% end %>
+  </div>
+<% end %>

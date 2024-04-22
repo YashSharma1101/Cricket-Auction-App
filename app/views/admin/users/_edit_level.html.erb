@@ -1,0 +1,7 @@
+<div class="edit-level">
+  <%= form_for(user, url: update_level_admin_user_path(user), remote: true, method: :patch) do |f| %>
+    <%#= f.text_field :level_of_skill %>
+    <%= f.select :level_of_skill, options_for_select(['Beginner', 'Intermediate', 'Expert'], selected: user.level_of_skill), {}, class: 'form-control' %>
+    <%= f.submit 'Update' %>
+  <% end %>
+</div>

@@ -1,0 +1,11 @@
+<h2>Login as Admin</h2>
+
+<%= form_with(url: admin_sessions_path, method: :post) do |form| %>
+  <%= form.label :email %>
+  <%= form.email_field :email, required: true %>
+
+  <%= form.label :password %>
+  <%= form.password_field :password, required: true %>
+
+  <%= form.submit 'Login' %>
+<% end %>

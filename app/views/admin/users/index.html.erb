@@ -1,0 +1,100 @@
+<style>
+	<%# td{
+		padding-right: 100px;
+	} %>
+</style>
+<h3 style="margin-top: 25px;">
+<%= link_to 'New User', new_admin_user_path %>| 
+<%= link_to 'Admin User Home', admin_users_path %>| <%= link_to 'Admin Dashboard', admin_dashboard_path %> | <%= button_to 'Logout', admin_sessions_path, method: :delete %></h3>
+</br><h2>All Users</h2>
+ <%= form_tag admin_search_path, method: :get, class: "form-inline my-4" do %>
+      <%# <h3 style="margin-bottom: 10px">Search for Multi User Edit</h3> %>
+      <div class="input-group">
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search for Multi User Edit..." %>
+        <div class="input-group-append">
+          <%= submit_tag "Search & Edit", class: "btn btn-outline-secondary", style: "border-radius: 1px;"%>
+        </div>
+      </div>
+    <% end %>
+<%if !@query.present?%>
+<table style="width: 100%;">
+  <thead>
+    <tr>
+      <th style="padding-right: 50px; padding-left: 20px;">ID</th>
+      <th>Full Name</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td style="padding-right: 50px; padding-left: 20px;"><%= user.id %></td>
+        <td style="padding-right: 100px;"><%= user.full_name %>
+        <%#= render partial: 'edit_full_name', locals: { user: user } %>
+        </td>
+
+        <td style="padding-right: 100px;"><%= user.email %>
+        <%#= render partial: 'edit_email', locals: { user: user } %>
+        </td>
+        <td>
+          <p style="word-spacing: 100px;"> <%= link_to 'View', admin_user_path(user) %>
+          <%= link_to 'Edit', edit_admin_user_path(user) %></p>
+          <%#= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% unless params["query"] == "" %>
+<ul class="pagination justify-content-center">
+  <%= will_paginate @users, previous_label: 'Previous', next_label: 'Next', page_links: false, class: 'page-item', link_class: 'page-link' %>
+</ul>
+<%end%>
+<%else%>
+  <table>
+  <thead>
+    <tr>
+      <th style="padding-right: 50px; padding-left: 20px;">ID</th>
+      <th>Full Name</th>
+      <th>Email</th>
+      <th>Skill</th>
+      <th>Level</th>
+      <th>Image</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td style="padding-right: 50px; padding-left: 20px;"><%= user.id %></td>
+        <td style="padding-right: 100px;">
+        <%= render partial: 'edit_full_name', locals: { user: user } %>
+        </td>
+
+        <td style="padding-right: 100px;">
+        <%= render partial: 'edit_email', locals: { user: user } %>
+        </td>
+
+        <td style="padding-right: 100px;">
+        <%= render partial: 'edit_skill', locals: { user: user } %>
+        </td>
+
+        <td style="padding-right: 100px;">
+        <%= render partial: 'edit_level', locals: { user: user } %>
+        </td>
+
+        <td style="padding-right: 100px;">
+        <%= render partial: 'edit_image', locals: { user: user } %>
+        </td>
+
+        <td style="padding-right: 100px;">
+          <p style="word-spacing: 40px;"> <%= link_to 'View', admin_user_path(user) %>
+          <%= link_to 'Edit', edit_admin_user_path(user) %></p>
+          <%#= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%end%>

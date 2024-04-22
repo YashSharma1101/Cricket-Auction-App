@@ -1,0 +1,8 @@
+<div class="edit-skill">
+  <%= form_for(user, url: update_skill_admin_user_path(user), remote: true, method: :patch) do |f| %>
+    <%#= f.text_field :skills %>
+    <%= f.select :skills, options_for_select(['All Rounder', 'Batting', 'Bowling'], selected: user.skills), {}, class: 'form-control' %>
+    <%= f.submit 'Update' %>
+  <% end %>
+</div>
+    <%#= f.collection_select :skills, {'Expert', 'Intermediate'}, :id, :skills, { prompt: 'Select Skill' }, class: 'form-control' %>

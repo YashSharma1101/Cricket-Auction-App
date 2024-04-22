@@ -1,0 +1,56 @@
+<!-- app/views/admin/users/_form.html.erb -->
+
+<%= form_with(model: [@user], local: true) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, 'error') %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :full_name %>
+    <%= form.text_field :full_name, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.email_field :email, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :skills %>
+    <%= form.select :skills, options_for_select(['All Rounder', 'Batting', 'Bowling']), {}, class: 'form-control' %>
+    <%#= form.text_field :skills, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :level_of_skill %>
+    <%= form.select :level_of_skill, options_for_select(['Beginner', 'Intermediate', 'Expert']), {}, class: 'form-control' %>
+    <%#= form.text_field :level_of_skill, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :team %>
+    <%= form.text_field :team %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender %>
+    <%= form.text_field :gender, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :photo_attachment %>
+    <%= form.file_field :photo_attachment, required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

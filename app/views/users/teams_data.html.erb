@@ -1,0 +1,116 @@
+<style type="text/css">
+	body{
+			background: linear-gradient(to top, #f58754, #1a237e);
+			background-color: #1a237e;
+	}
+  .team-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  header {
+    background: linear-gradient(to right, #f57224, #1a237e); 
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 2.2em; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+	}
+	h1{
+		margin-top: 20px;
+		font-size: 2.5em;
+		text-align: center;
+		color: white;
+	}
+	.logo img {
+	    max-height: 40px;
+	    margin: 0 10px;
+	  }
+  .team-table {
+    background: linear-gradient(to right, #f57224, #f58754);
+    font-size: 1.5em;
+    color: black;
+    width: 48%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .team-table th, .team-table td {
+    border: 2px solid #ddd;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .team-name {
+    background-color: #f2f2f2;
+    cursor: pointer;
+  }
+
+  .team-table th {
+    color: #fff;
+    background-color: #1a237e;
+  }
+
+  .player-list {
+    list-style-type: none;
+    padding: 0;
+    display: none;
+  }
+
+  .player-list-item {
+    margin-bottom: 5px;
+  }
+
+  .click-to-see {
+    font-size: 0.8em;
+    color: #333;
+  }
+</style>
+<body>
+<header>
+	<div class="logo">
+	  <img src="/assets/logo.png" alt=""><b>Taskcraft Cricket League</b>
+	</div>
+</header>
+<h1>Sqaud Details</h1>
+<div class="team-container">
+  <% @teams.each_with_index do |team, index| %>
+    <table class="team-table">
+      <tr>
+        <th colspan="2" class="team-name">
+          <%= "#{team.name} (#{User.where(team: team.name).count})" %>  <p style="align-content: right; font-size: 0.7em;"><%="Purse Rem. ₹#{team.purse}"%></p>
+        </th>
+      </tr>
+      <tr class="player-list-row">
+        <td>
+        <div class="click-to-see">(Click to see squad)</div>
+          <ul class="player-list">
+            <% User.where(team: team.name).each do |user| %>
+              <li class="player-list-item">
+                <%= "#{user&.full_name} (Sold for ₹#{user&.price})" %>
+              </li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+    </table>
+    <% if index % 4 == 3 %>
+      <div style="width: 100%;"></div> <!-- Add a line break after every 4 teams -->
+    <% end %>
+  <% end %>
+</div>
+</body>
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function() {
+    var teamRows = document.querySelectorAll('.player-list-row');
+
+    teamRows.forEach(function(teamRow) {
+      teamRow.addEventListener('click', function() {
+        var playerList = this.querySelector('.player-list');
+        playerList.style.display = (playerList.style.display === 'none' || playerList.style.display === '') ? 'block' : 'none';
+      });
+    });
+  });
+</script>

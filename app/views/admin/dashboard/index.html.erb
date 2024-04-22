@@ -1,0 +1,6 @@
+<h1 style="margin-top: 25px;">Your are now logged in</h1>
+<h3> View <%= link_to 'All Users', admin_users_path %></h3>
+
+<h3>Logout</h3>
+<%= button_to 'Yes, Logout', admin_sessions_path, method: :delete %>
+<%= link_to 'Cancel', admin_dashboard_path %>	

@@ -8,10 +8,16 @@ class UsersController < ApplicationController
                                 .order('MAX(updated_at) DESC')
                                 .pluck('MAX(updated_at) as latest_purchase_time, team, MAX(full_name) as latest_user_name, MAX(price) as latest_user_price')
 
+    # @users_by_team = User.where.not(team: nil)
+    #                  .group(:team)
+    #                  .order('team, MAX(updated_at) DESC')
+    #                  .pluck('team, MAX(updated_at) as latest_purchase_time, GROUP_CONCAT(full_name) as user_names, GROUP_CONCAT(price) as user_prices')
+
     @users_by_team = User.where.not(team: nil)
                      .group(:team)
                      .order('team, MAX(updated_at) DESC')
-                     .pluck('team, MAX(updated_at) as latest_purchase_time, GROUP_CONCAT(full_name) as user_names, GROUP_CONCAT(price) as user_prices')
+                     .pluck("team, MAX(updated_at) as latest_purchase_time, STRING_AGG(full_name, ', ') as user_names, STRING_AGG(price::text, ', ') as user_prices")
+
   end
 
   def import

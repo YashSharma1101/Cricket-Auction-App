@@ -18,12 +18,11 @@ class TeamsController < ApplicationController
   
   def create
     @team = Team.new(team_params)
-    byebug
-    # if @team.save
+    if @team.save
       redirect_to team_path(@team)
-    # else
-      # render :new
-    # end
+    else
+      render :new
+    end
   end
 
   def update

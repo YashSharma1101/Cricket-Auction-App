@@ -2,6 +2,10 @@
 
 Rails.application.routes.draw do
   
+  get 'teams/index'
+  get 'teams/create'
+  get 'teams/update'
+  get 'teams/destory'
   # namespace :admin do
   #   get 'users/index'
   #   get 'users/show'
@@ -48,4 +52,5 @@ Rails.application.routes.draw do
     }
     member { patch :associate_photo }
   end
+  resources :teams
 end

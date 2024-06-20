@@ -1,0 +1,8 @@
+<h2>Team Details</h2>
+
+<p><strong>ID:</strong> <%= @team.id %></p>
+<p><strong> Name:</strong> <%= @team.name %></p>
+<p><strong> Purse:</strong> <%= @team.purse %></p>
+<p><strong> Purse:</strong> <%= @team.total_players %></p>
+<%= link_to 'Edit', edit_team_path(@team) %> |
+<%= link_to 'Back', teams_path %>

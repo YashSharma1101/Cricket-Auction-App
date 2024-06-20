@@ -1,0 +1,31 @@
+<table style="width: 100%;">
+    <thead>
+      <tr>
+        <th style="padding-right: 50px; padding-left: 20px;">ID</th>
+        <th>Name</th>
+        <th>Purse</th>
+        <th>Total Players</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @teams.each do |team| %>
+        <tr>
+          <td style="padding-right: 50px; padding-left: 20px;"><%= team.id %></td>
+          <td style="padding-right: 100px;"><%= team.name %>
+          <%#= render partial: 'edit_full_name', locals: { team: team } %>
+          </td>
+  
+          <td style="padding-right: 100px;"><%= team.purse %>
+          <%#= render partial: 'edit_email', locals: { team: team } %>
+          </td>
+          <td>
+            <p style="word-spacing: 100px;"> <%= link_to 'View', team_path(team) %>
+            <%= link_to 'Edit', edit_team_path(team) %></p>
+            <%#= link_to 'Destroy', admin_team_path(team), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to 'Create Team', new_team_path %></p>
+  <%= link_to 'Home', root_path %></p>

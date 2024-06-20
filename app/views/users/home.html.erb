@@ -1,0 +1,25 @@
+<style type="text/css">
+	.home{
+		font-size: 90px;
+		margin-top: 50px;
+		text-align: center;
+	}
+	.inner-home{
+		margin-left: 50px;
+	}
+</style>
+<br><br><br><br><br><br>
+<div class="home">
+	<div class="inner-home">
+		<%= link_to 'Auction Page ', users_path, target: "_blank" %>
+	</div>
+	<div class="inner-home">
+		<%= link_to 'Team Data ', teams_data_path, target: "_blank" %>
+	</div>
+	<div class="inner-home">
+		<%= link_to 'Add Photos ', associate_photos_users_path, target: "_blank" %><br>
+	</div>
+	<div class="inner-home">
+		<%= link_to 'Admin Session ', new_admin_sessions_path, target: "_blank" %><br>
+	</div>
+</div>

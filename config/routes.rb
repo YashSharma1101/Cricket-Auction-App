@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   # namespace :admin do
   #   get 'dashboard/index'
   # end
-  root to: "users#index"
+  root to: "users#home"
+  # root to: "users#index"
   get '/teams_data', to: 'users#teams_data', as: 'teams_data'
   post '/send_mail', to: 'users#send_mail', as: 'send_mail'
 
@@ -43,6 +44,7 @@ Rails.application.routes.draw do
     collection { 
       post :import
       get :associate_photos 
+      get 'home', to: 'users#home'
     }
     member { patch :associate_photo }
   end

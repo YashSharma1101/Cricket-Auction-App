@@ -72,6 +72,18 @@ class User < ApplicationRecord
       user.save!
     end
   end
+
+   def send_mail
+    byebug
+    # @user = User.all
+    # @user.each do |user| 
+      user = User.find_by(email: "yashsharma0787@gmail.in")
+      byebug
+      if user.price == 0 && user.email.present?
+        AuctionMailer.player_report(user).deliver_later
+      end
+    # end
+  end
 end
 
 

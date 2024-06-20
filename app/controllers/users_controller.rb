@@ -33,10 +33,8 @@ class UsersController < ApplicationController
     # redirect_to associate_photos_users_path, notice: "Photo associated successfully"
   end
 
-   def create
-    byebug
+  def create
     @user = User.new(user_params)
-    byebug
     @user.photo_attachment.attach(params[:user][:photo_attachment])
     if @user.save
       redirect_to admin_user_path(@user)
@@ -86,7 +84,7 @@ class UsersController < ApplicationController
     byebug
     # @user = User.all
     # @user.each do |user| 
-      user = User.find_by(email: "yash.sharma@poolstack.in")
+      user = User.find_by(email: "yashsharma0787@gmail.in")
       byebug
       if user.price == 0 && user.email.present?
         AuctionMailer.player_report(user).deliver_later
@@ -95,9 +93,9 @@ class UsersController < ApplicationController
   end
   
 
-  # def update_user_details
+  def home
       
-  # end
+  end
 
   private
 

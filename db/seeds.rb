@@ -11,4 +11,5 @@ unless Admin.find_by(email: 'admin@example.com')
       password: 'password',
       password_confirmation: 'password'
     )
-  end
+end
+User.where(price: nil).update_all(price: 0)

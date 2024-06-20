@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @users_by_team = User.where.not(team: nil)
                      .group(:team)
                      .order('team, MAX(updated_at) DESC')
-                     .pluck("team, MAX(updated_at) as latest_purchase_time, STRING_AGG(full_name, ', ') as user_names, STRING_AGG(price::text, ', ') as user_prices")
+                     .select('team, MAX(updated_at) as latest_purchase_time, STRING_AGG(full_name, \', \') as user_names, STRING_AGG(price::text, \', \') as user_prices')
 
   end
 

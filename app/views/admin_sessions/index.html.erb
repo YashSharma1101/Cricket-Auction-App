@@ -13,4 +13,3 @@
         <%#= button_to "Cancel my account", admin_session_path(admin), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" },class: "btn btn-block mt-3 custom-btn", method: :delete %></div>
 <%end%>
 </div>
-<%= button_to 'Logout', "/admin_sessions/#{@current_user.id}", method: :delete %>

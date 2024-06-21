@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   get '/teams_data', to: 'users#teams_data', as: 'teams_data'
   post '/send_mail', to: 'users#send_mail', as: 'send_mail'
 
-  resource :admin_sessions, only: [:new, :create, :destroy]
+  resources :admin_sessions do
+    delete '/delete_admin', to: 'admin_sessions#delete_admin', as: 'delete_admin'
+  end #, only: [:new, :create, :destroy]
   # namespace :admin do
   #   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
   #   resources :users do

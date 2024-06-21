@@ -3,6 +3,7 @@ class Admin::UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
+    @admin = Admin.find_by(id: session[:admin_id])
     @users = User.paginate(page: params[:page], per_page: 12)
   end
 
@@ -86,6 +87,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def search
+    @admin = Admin.find_by(id: session[:admin_id])
     @query = params[:query]
     @users = User.where("full_name LIKE ?", "#{@query}%")
     render :index

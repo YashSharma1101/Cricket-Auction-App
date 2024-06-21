@@ -1,12 +1,17 @@
-<style>
-	<%# td{
-		padding-right: 100px;
-	} %>
-</style>
+<title>iLead Cricket Auction</title>
 <h3 style="margin-top: 25px;">
-<%= link_to 'New User', new_admin_user_path %>| 
-<%= link_to 'Admin User Home', admin_users_path %>| <%= link_to 'Admin Dashboard', admin_dashboard_path %> | <%= button_to 'Logout', admin_sessions_path, method: :delete %></h3>
-</br><h2>All Users</h2>
+  <div style="display: flex; padding: 2px 8px; text-align: center; font-size: 24px;">
+<div style="border: 2px solid #333; width: 15%; margin-right: 10px;">
+  <%= link_to 'Add New Player', new_admin_user_path %>
+</div>
+<div style="border: 2px solid #333; width: 15%;">
+  <%= link_to 'Home', root_path %>
+</div>
+<div style="margin-left: 20px;">
+  <%= button_to 'Logout', "/admin_sessions/#{@admin.id}", method: :delete %>
+</div>
+</h3>
+</br><h2 style="text-align: center;">All Players</h2>
  <%= form_tag admin_search_path, method: :get, class: "form-inline my-4" do %>
       <%# <h3 style="margin-bottom: 10px">Search for Multi User Edit</h3> %>
       <div class="input-group">

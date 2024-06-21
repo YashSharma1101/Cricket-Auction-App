@@ -1,11 +1,33 @@
-<h2>Login as Admin</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>iLead Cricket Auction - Login</title>
+  <style>
+    body {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="mb-md-4 mt-md-4 pb-4"></div>
+  <h2 class="fw-bold mb-3 text-uppercase">Login to access</h2>
+  <p class="text-white-50 mb-5">Please enter your email and password!</p>
 
-<%= form_with(url: admin_sessions_path, method: :post) do |form| %>
-  <%= form.label :email %>
-  <%= form.email_field :email, required: true %>
+  <%= form_with(url: admin_sessions_path, method: :post) do |form| %>
+    <div>
+      <%= form.label :email %><br>
+      <%= form.email_field :email, required: true %>
+    </div>
 
-  <%= form.label :password %>
-  <%= form.password_field :password, required: true %>
+    <div>
+      <%= form.label :password %><br>
+      <%= form.password_field :password, required: true %>
+    </div>
 
-  <%= form.submit 'Login' %>
-<% end %>
+    <div>
+      <%= form.submit 'Login' %>
+    </div>
+  <% end %>
+</body>
+</html>

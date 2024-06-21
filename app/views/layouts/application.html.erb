@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>iLead Cricket Auction</title>
+    <!-- <title>iLead Cricket Auction</title> -->
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,7 +12,24 @@
   </head>
 
   <body>
-   
+    <h5>
+      <% if notice %>
+        <div class="alert alert-success"><%= notice %></div>
+      <% end %>
+      <% if alert %>
+        <div class="alert alert-danger"><%= alert %></div>
+      <% end %>
+      <p class="navbar-text float-right">
+      </p>
+    </h5>
     <%= yield %>
   </body>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    console.log("Script is running!");
+    $(".alert-danger").delay(5000).slideUp(550);
+    $(".alert-success").delay(5000).slideUp(550);
+  }); 
+</script>
 </html>

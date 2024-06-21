@@ -1,28 +1,122 @@
-<style type="text/css">
-	.home{
-		font-size: 90px;
-		margin-top: 50px;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TheCricAuction - Home</title>
+  <style>
+    /* Global styles */
+    body {
+      background: linear-gradient(to top, #f58754, #1a237e);
+      background-color: #1a237e;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+    .container {
+      max-width: 800px;
+      width: 100%;
+      padding: 20px;
+      margin-bottom: 50px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      /* text-align: center; */
+    }
+    .header-section {
+	  text-align: center;
+      margin-bottom: 30px;
+    }
+    .header-section h1 {
+      font-size: 36px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    .info-section {
+      margin-bottom: 30px;
+    }
+	.info-section h2, p{
 		text-align: center;
 	}
-	.inner-home{
-		margin-left: 50px;
-	}
-</style>
-<br><br><br><br><br><br>
-<div class="home">
-	<div class="inner-home">
-		<%= link_to 'Auction Page ', users_path, target: "_blank" %>
-	</div>
-	<div class="inner-home">
-		<%= link_to 'Team Data ', teams_data_path, target: "_blank" %>
-	</div>
-	<div class="inner-home">
-		<%= link_to 'Team Manage ', teams_path, target: "_blank" %><br>
-	</div>
-	<div class="inner-home">
-		<%= link_to 'Add Photos ', associate_photos_users_path, target: "_blank" %><br>
-	</div>
-	<div class="inner-home">
-		<%= link_to 'Admin Session ', new_admin_sessions_path, target: "_blank" %><br>
-	</div>
-</div>
+    .info-section h2 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    .info-section p {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .home {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .inner-home {
+      flex: 1 0 200px; /* Adjust width as needed */
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .inner-home a {
+      display: block;
+      padding: 12px;
+      text-decoration: none;
+      background-color: #f57224;
+      color: #fff;
+      border: 5px solid #f58754;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      font-size: 18px;
+    }
+    .inner-home a:hover {
+      background-color: #f58754;
+    }
+  </style>
+</head>
+<body>
+  <div class="container header-section">
+    <h1>Welcome to iLead Cricket League</h1>
+    <p>Explore the following options to streamline your league management:</p>
+  </div>
+
+  <div class="home">
+    <div class="inner-home">
+      <a href="<%= admin_users_path %>" target="_blank">Manage Players</a>
+    </div>
+    <div class="inner-home">
+      <a href="<%= teams_data_path %>" target="_blank">Teams Insights</a>
+    </div>
+    <div class="inner-home">
+      <a href="<%= teams_path %>" target="_blank">Manage Teams</a>
+    </div>
+    <div class="inner-home">
+      <a href="<%= users_path %>" target="_blank">Go to Auction </a>
+    </div>
+  </div>
+
+  <div class="container info-section">
+	<h2>About TheCricAuction</h2>
+	<p>TheCricAuction is a specialized platform designed for cricket leagues, offering:</p>
+	<!-- <ul style="list-style-type: none;"> -->
+	<ul>
+	  <li>Efficient player auction and team data management.</li>
+	  <li>Place bids, set bid limits, and monitor bidding activity.</li>
+	  <li>Create, modify, and manage team and player profiles.</li>
+	  <li>Allocate budgets and manage team finances.</li>
+	  <li>Email notifications for auction events and player details.</li>
+	  <li>Customize auction rules, settings, and formats.</li>
+	  <li>Customizable features to adapt to different league requirements.</li>
+	</ul>
+	<p>Empower your cricket league with TheCricAuction's tailored features and elevate your management experience today.</p>
+  </div>
+  
+</body>
+</html>

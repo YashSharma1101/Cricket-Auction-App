@@ -8,6 +8,7 @@ class AdminSessionsController < ApplicationController
     if admin && admin.authenticate(params[:password])
      
       session[:admin_id] = admin.id
+
       redirect_to root_path, notice: "Logged in successfully, a new has session been started, you can now access the application."
     else
       redirect_to new_admin_session_path, notice: "Wrong email/password."

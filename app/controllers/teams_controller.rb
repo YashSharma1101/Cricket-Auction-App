@@ -21,7 +21,7 @@ class TeamsController < ApplicationController
     if @team.save
       redirect_to team_path(@team), notice: "Team #{@team.name} created."
     else
-      render :new
+      render :new, notice: "Unable to create team #{@team.name}"
     end
   end
 

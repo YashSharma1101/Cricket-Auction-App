@@ -91,7 +91,7 @@ class Admin::UsersController < ApplicationController
     users = User.paginate(page: params[:page], per_page: 5)
     @admin = Admin.find_by(id: session[:admin_id])
     @query = params[:query]
-    @users = users.where("full_name LIKE ?", "#{@query}%")
+    @users = users.where("full_name LIKE ?", "%#{@query}%")
     render :index
   end
 

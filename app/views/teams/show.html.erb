@@ -12,6 +12,10 @@
       margin: 0;
       padding: 0;
     }
+    h5{
+      text-align: center;
+
+    }
     .container {
       max-width: 600px;
       margin: 20px auto;
@@ -50,11 +54,11 @@
 </head>
 <body>
   <div class="container">
-    <h2>Team Details</h2>
+    <h2>Team <%= @team.name %></h2>
 
     <p><strong>ID:</strong> <%= @team.id %></p>
     <p><strong>Name:</strong> <%= @team.name %></p>
-    <p><strong>Purse:</strong> <%= @team.purse %></p>
+    <p><strong>Purse:</strong> ₹<%= @team.purse %></p>
     <p><strong>Total Players:</strong> <%= @team.total_players %></p>
 
     <div class="actions">

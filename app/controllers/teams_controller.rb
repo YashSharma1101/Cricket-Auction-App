@@ -19,13 +19,18 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     if @team.save
-      redirect_to team_path(@team)
+      redirect_to team_path(@team), notice: "Team #{@team.name} created."
     else
       render :new
     end
   end
 
   def update
+    @team = Team.find_by(id: params[:id])
+    if @team.update(team_params)
+      redirect_to team_path(@team), notice: "Team #{@team.name} data updated."
+    else
+    end
   end
 
   def destory

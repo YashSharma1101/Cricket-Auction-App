@@ -34,10 +34,9 @@
     <%= form.select :level_of_skill, options_for_select(['Beginner', 'Intermediate', 'Expert']), {}, class: 'form-control' %>
     <%#= form.text_field :level_of_skill, required: true %>
   </div>
-
   <div class="field">
     <%= form.label :team %>
-    <%= form.text_field :team %>
+    <%= form.text_field :team, disabled: @user.new_record?, class: 'form-control'%>
   </div>
 
   <div class="field">
@@ -45,9 +44,9 @@
     <%= form.select :gender, options_for_select(['M', 'F']), {}, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price, required: true %>
+  <div class="field-input-group">
+    <%= form.label :price %>(₹)
+    <%= form.text_field :price, value: 0, required: true, class: 'form-control' %>
   </div>
 
   <div class="field">

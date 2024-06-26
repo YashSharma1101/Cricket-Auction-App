@@ -16,10 +16,11 @@
     <%= form.text_field :name, required: true, autofocus: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :purse %>
-    <%= form.number_field :purse, required: true %>
+  <div class="field input-group">
+    <%= form.label :purse %>(₹)
+    <%= form.number_field :purse, required: true, class: 'form-control' %>
   </div>
+  
 
   <div class="field">
     <%= form.label :total_players %>
@@ -27,6 +28,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit 'Create Team', class: 'action-button' %>
+    <%= form.submit 'Submit', class: 'action-button' %>
   </div>
 <% end %>

@@ -51,16 +51,26 @@
 </head>
 <body>
   <div class="container" style="margin-top: 200px;">
-    <h2>User Details</h2>
+    <%if @user.team.nil?%>
+        <h2><%= @user.full_name%> | Yet to be auctioned </h2>
+    <%else%>    
+        <h2><%= @user.full_name%> | Sold for ₹<%= @user&.price %> to <%= @user&.team %> </h2>
+    <%end%>
+    
 
     <div class="user-details">
       <p><strong>ID:</strong> <%= @user.id %></p>
       <p><strong>Full Name:</strong> <%= @user.full_name %></p>
       <p><strong>Email:</strong> <%= @user.email %></p>
+      <p><strong>Team:</strong> <%= (@user&.team.nil?)? "Yet to be auctioned" : @user&.team %></p>
+      <p><strong>Price(₹):</strong> <%= (@user&.price==0)? "Yet to be auctioned" : @user.price  %></p>
+      <p><strong>Skills:</strong> <%= @user&.skills %></p>
+      <p><strong>Level:</strong> <%= @user&.level_of_skill %></p>
+    
     </div>
 
     <div class="actions">
-      <%= link_to 'Edit', edit_admin_user_path(@user) %>
+      <%#= link_to 'Edit', edit_admin_user_path(@user) %>
       <%= link_to 'Back', admin_users_path %>
     </div>
   </div>

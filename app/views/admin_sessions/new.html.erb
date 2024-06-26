@@ -5,29 +5,91 @@
   <title>iLead Cricket Auction - Login</title>
   <style>
     body {
+      background: linear-gradient(to top, #f58754, #1a237e);
+      background-size: cover; /* Ensures the background covers the entire viewport */
+      background-attachment: fixed; /* Keeps the background fixed while scrolling */
+      color: black;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center; /* Center align text */
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for content */
+      padding: 20px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    h2 {
+      color: #f58754;
+    }
+    form {
+      margin-top: 20px;
+    }
+    .field {
+      margin-bottom: 15px;
+      text-align: left; /* Align labels and inputs to the left */
+    }
+    .field label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px; /* Adjust margin for label */
+      color: #333; /* Adjust label color */
+      text-align: left; /* Align label text to the left */
+    }
+    .field input[type="email"],
+    .field input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    .actions {
       text-align: center;
+      margin-top: 20px;
+    }
+    .actions input[type="submit"] {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #f57224;
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+      margin: 10px;
+      border: none; /* Remove border for submit button */
+      cursor: pointer; /* Change cursor on hover */
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .actions input[type="submit"]:hover {
+      background-color: #1a237e;
     }
   </style>
 </head>
 <body>
-  <div class="mb-md-4 mt-md-4 pb-4"></div>
-  <h2 class="fw-bold mb-3 text-uppercase">Login to access</h2>
-  <p class="text-white-50 mb-5">Please enter your email and password!</p>
+  <div class="container">
+    <h2>Login to access</h2>
+    <p>Please enter your email and password!</p>
 
-  <%= form_with(url: admin_sessions_path, method: :post) do |form| %>
-    <div>
-      <%= form.label :email %><br>
-      <%= form.email_field :email, required: true %>
-    </div>
+    <%= form_with(url: admin_sessions_path, method: :post) do |form| %>
+      <div class="field">
+        <%= form.label :email %><br>
+        <%= form.email_field :email, required: true %>
+      </div>
 
-    <div>
-      <%= form.label :password %><br>
-      <%= form.password_field :password, required: true %>
-    </div>
+      <div class="field">
+        <%= form.label :password %><br>
+        <%= form.password_field :password, required: true %>
+      </div>
 
-    <div>
-      <%= form.submit 'Login' %>
-    </div>
-  <% end %>
+      <div class="actions">
+        <%= form.submit 'Login' %>
+      </div>
+    <% end %>
+  </div>
 </body>
 </html>

@@ -25,8 +25,29 @@
       text-align: center;
       color: #f58754;
     }
+    h5{
+        text-align: center;
+    }
+    form {
+      margin-top: 20px;
+    }
     .field {
       margin-bottom: 15px;
+    }
+    .field label {
+      display: block;
+      font-weight: bold;
+    }
+    .field input[type="text"],
+    .field input[type="email"],
+    .field select,
+    .field input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
     }
     .actions {
       text-align: center;
@@ -45,11 +66,26 @@
     .actions a:hover {
       background-color: #1a237e;
     }
+    .actions input[type="submit"], .actions .button-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: black;
+      border: 2px solid #f57224;
+      border-radius: 4px;
+      text-decoration: none;
+      margin: 10px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .actions .button-link:hover {
+      background-color: #f57224;
+      color: white;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>New User</h2>
+    <h2>Register New Player</h2>
 
     <%= render 'form' %>
 

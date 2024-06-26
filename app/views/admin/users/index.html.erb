@@ -6,6 +6,8 @@
     body {
       background: linear-gradient(to top, #f58754, #1a237e);
       background-color: #1a237e;
+      background-size: cover; /* Ensures the background covers the entire viewport */
+      background-attachment: fixed; 
       color: white;
       font-family: Arial, sans-serif;
     }
@@ -27,9 +29,13 @@
     h3 > div {
       margin-right: 10px;
     }
+    h4{
+      text-align: center;
+      padding: 4px;
+    }
     .button-container {
       border: 2px solid #fff;
-      width: 15%;
+      width: 20%;
     }
     .button-container:last-child {
       margin-left: 20px;
@@ -57,6 +63,7 @@
       margin: 20px auto;
     }
     .form-inline .input-group {
+      padding: 8px;
       display: inline-flex;
     }
     .form-inline .form-control {
@@ -88,13 +95,13 @@
       color: white;
     }
     table td {
-      background-color: #1a237e;
+      background: linear-gradient(to top, #595c7f, #1a237e);
       color: #f58754;
     }
     .pagination {
       margin-top: 20px;
       list-style-type: none;
-      display: flex;
+      display: flex;  
       justify-content: center;
     }
     .pagination li {
@@ -128,77 +135,97 @@
     </div>
   </h3>
   <!-- <h2>All Players</h2> -->
+  <% if @users.present? %>
   <%= form_tag admin_search_path, method: :get, class: "form-inline" do %>
-    <div class="input-group">
-      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search for Multi User Edit..." %>
-      <div class="input-group-append">
-        <%= submit_tag "Search & Edit", class: "btn btn-outline-secondary" %>
+      <div class="input-group">
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search for Multi User Edit..." %>
+        <div class="input-group-append">
+          <%= submit_tag "Search & Edit", class: "btn btn-outline-secondary" %>
+        </div>
+        <%if params[:query].present? || params[:query]==""%>
+          <div class="button-container">
+            <%= link_to 'Clear', admin_users_path %>
+          </div>
+        <%end%>
       </div>
-    </div>
-  <% end %>
-  <% if !@query.present? %>
-    <table>
-      <thead>
-        <tr>
-          <th style="padding-right: 50px; padding-left: 20px;">ID</th>
-          <th>Full Name</th>
-          <th>Email</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td style="padding-right: 50px; padding-left: 20px;"><%= user.id %></td>
-            <td style="padding-right: 100px;"><%= user.full_name %></td>
-            <td style="padding-right: 100px;"><%= user.email %></td>
-            <td>
-              <p style="word-spacing: 100px;">
-                <%= link_to 'View', admin_user_path(user), style: "color: #f57224;" %>
-                <%#= link_to 'Edit', edit_admin_user_path(user), style: "color: #f57224;" %>
-              </p>              
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <% unless params["query"] == "" %>
-      <ul class="pagination">
-        <%= will_paginate @users, previous_label: 'Previous', next_label: 'Next', page_links: false, class: 'page-item', link_class: 'page-link' %>
-      </ul>
     <% end %>
-  <% else %>
-    <table>
-      <thead>
-        <tr>
-          <th style="padding-right: 50px; padding-left: 20px;">ID</th>
-          <th>Full Name</th>
-          <th>Email</th>
-          <th>Skill</th>
-          <th>Level</th>
-          <th>Image</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
+    <% if !@query.present? %>
+      <table>
+        <thead>
           <tr>
-            <td style="padding-right: 50px; padding-left: 20px;"><%= user.id %></td>
-            <td style="padding-right: 100px;"><%= render partial: 'edit_full_name', locals: { user: user } %></td>
-            <td style="padding-right: 100px;"><%= render partial: 'edit_email', locals: { user: user } %></td>
-            <td style="padding-right: 100px;"><%= render partial: 'edit_skill', locals: { user: user } %></td>
-            <td style="padding-right: 100px;"><%= render partial: 'edit_level', locals: { user: user } %></td>
-            <td style="padding-right: 100px;"><%= render partial: 'edit_image', locals: { user: user } %></td>
-            <td style="padding-right: 100px;">
-              <p style="word-spacing: 40px;">
-                <%= link_to 'View', admin_user_path(user) %>
-                <%= link_to 'Edit', edit_admin_user_path(user) %>
-              </p>
-            </td>
+            <th style="padding-right: 50px; padding-left: 20px;">ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Actions</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td style="padding-right: 50px; padding-left: 20px;"><%= user.id %></td>
+              <td style="padding-right: 100px;"><%= user.full_name %></td>
+              <td style="padding-right: 100px;"><%= user.email %></td>
+              <td>
+                <p style="word-spacing: 100px;">
+                  <%= link_to 'View', admin_user_path(user), style: "color: #f57224;" %>
+                  <%#= link_to 'Edit', edit_admin_user_path(user), style: "color: #f57224;" %>
+                </p>              
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <% unless params["query"] == "" %>
+        <ul class="pagination">
+          <%= will_paginate @users, previous_label: 'Previous', next_label: 'Next', page_links: false, class: 'page-item', link_class: 'page-link' %>
+        </ul>
+      <% end %>
+    <% else %>
+    <p style="padding: 2px; margin-left:8px;">Found <%=@users.count %> Players With Name "<%= @query %>"</p>
+      <table>
+        <thead>
+          <tr>
+            <th style="padding-right: 50px; padding-left: 20px;">ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Skill</th>
+            <th>Level</th>
+            <th>Image</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td style="padding-right: 50px; padding-left: 20px;"><%= user.id %></td>
+              <td style="padding-right: 100px;"><%= render partial: 'edit_full_name', locals: { user: user } %></td>
+              <td style="padding-right: 100px;"><%= render partial: 'edit_email', locals: { user: user } %></td>
+              <td style="padding-right: 100px;"><%= render partial: 'edit_skill', locals: { user: user } %></td>
+              <td style="padding-right: 100px;"><%= render partial: 'edit_level', locals: { user: user } %></td>
+              <td style="padding-right: 0px;"><%= render partial: 'edit_image', locals: { user: user } %></td>
+              <td style="padding-right: 100px;">
+                <p style="word-spacing: 100px;">
+                  <%= link_to 'View', admin_user_path(user), style: "color: #f57224;" %>
+                  <%#= link_to 'Edit', edit_admin_user_path(user), style: "color: #f57224;" %>
+                </p>  
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <% unless params["query"] == "" %>
+        <ul class="pagination">
+          <%= will_paginate @users, previous_label: 'Previous', next_label: 'Next', page_links: false, class: 'page-item', link_class: 'page-link' %>
+        </ul>
+      <% end %>
+    <% end %>
+  <%else%>
+      <%if @query.present?%>
+        <h4>No Players Found With The Name <b>"<%= @query%>"</b></h4>
+        <h4>Try Searching For Different Players! Or " <%= link_to ' Add New Players', new_admin_user_path %>"</h4>
+        <%else%>
+        <h3>No players added " <%= link_to ' Add New Player', new_admin_user_path %>"</h3>
+        <%end%>
+  <%end%>
 </body>
 </html>

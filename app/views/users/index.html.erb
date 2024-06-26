@@ -17,6 +17,8 @@
 	  body {
 	    font-family: 'Trebuchet MS';
 	    background-color:	#0a0a2a;
+		background-size: cover; /* Ensures the background covers the entire viewport */
+        background-attachment: fixed;
 <%# 	    background-color: #1a237e;  %>
 	    margin: 0;
 	    padding: 10px;
@@ -476,7 +478,7 @@ p.animation-text:hover {
 		    		<tr>
 		    			<th>Total Players</th> 
 		    			<th>Sold Players</th>
-		    			<th>Yet to Auctioned</th>
+		    			<th>Yet to be Auctioned</th>
 		    		</tr>
 		    		<tr>
 		    			<td><%= User.count %></td>
@@ -489,7 +491,7 @@ p.animation-text:hover {
 		    	<p style="color: white; font-size: 1.0em;"> <marquee width="100%" behavior="scroll" scrollamount="10">
      <%unless @teams_with_latest_users.empty? %>
      <%#unless @users_by_team.empty? %>
-			<b>Auction App | Developed By: Yash Sharma </b>
+			<b>TheCricAuction | Developed By: Yash Sharma </b>
 			<b>|  Latest Purchased Players: </b>
 				<% @teams_with_latest_users.each do |team_info| %>
 			  	<b><%= team_info[1] %>: </b>
@@ -504,7 +506,7 @@ p.animation-text:hover {
 
 <%#= team_info_strings.join(' ') %>
 			<%else%>
-			Auction App | Developed By: Yash Sharma | Auction is yet to start
+			TheCricAuction | Developed By: Yash Sharma | The auction is yet to start
 			<%end%>
 		</marquee>
 			</p>	

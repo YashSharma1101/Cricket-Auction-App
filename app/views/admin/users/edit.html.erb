@@ -1,9 +1,86 @@
-<!-- app/views/admin/users/edit.html.erb -->
-<title>iLead Cricket Auction</title>
-<h2>Edit User</h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>iLead Cricket Auction</title>
+  <style type="text/css">
+    body {
+      background: linear-gradient(to top, #f58754, #1a237e);
+      background-color: #1a237e;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      background: linear-gradient(to right, #f57224, #1a237e); 
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 2.2em; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    }
+    h2 {
+      text-align: center;
+    }
+    .form-container {
+      margin: 20px auto;
+      width: 50%;
+      background-color: #fff;
+      padding: 20px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      max-height: calc(100vh - 250px); /* Adjust as needed */
+      overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
+    }
+    .field {
+      margin-bottom: 5px;
+    }
+    .field label {
+      display: block;
+      margin-bottom: 2px;
+    }
+    .field input[type="text"],
+    .field input[type="email"],
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .actions input[type="submit"], .actions .button-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: black;
+      border: 2px solid #f57224;
+      border-radius: 4px;
+      text-decoration: none;
+      margin: 10px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .actions .button-link:hover {
+      background-color: #f57224;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <b>iLead Cricket Auction</b>
+  </header>
+  <h2>Edit User</h2>
 
-<%= render 'form' %>
+  <div class="form-container">
+    <%= render 'form' %>
+  </div>
 
-<%= link_to 'Show', admin_user_path(@user) %> |
-<%= link_to 'Back', admin_users_path %>
-
+  <div class="actions">
+    <%= link_to 'Show', admin_user_path(@user), class: "button-link" %>
+    <%= link_to 'Back', admin_users_path, class: "button-link" %>
+  </div>
+</body>
+</html>

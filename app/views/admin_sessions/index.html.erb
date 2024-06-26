@@ -1,10 +1,15 @@
 <title>iLead Cricket Auction</title>
 <style>
+    body{
+        text-align: center;
+    }
     .admin{
+        margin-left: 2%;
         margin-top: 25px;
         display: flex;
     }
 </style>
+<body>
 <div class="admin">
 <% @admin.each do |admin|%>
     <div style="margin-top: 20px;">    
@@ -13,3 +18,4 @@
         <%#= button_to "Cancel my account", admin_session_path(admin), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" },class: "btn btn-block mt-3 custom-btn", method: :delete %></div>
 <%end%>
 </div>
+</body>

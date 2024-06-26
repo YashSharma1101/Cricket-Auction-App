@@ -1,0 +1,22 @@
+<style>
+  body{
+    text-align: center;
+  }
+</style>
+<body>
+  <%= form_for @admin, url: admin_path(@admin), method: :patch do |form| %>
+    <div>
+      <%= form.label :email %><br>
+      <%= form.email_field :email, required: true %>
+    </div>
+
+    <div>
+      <%= form.label :password %><br>
+      <%= form.password_field :password, required: true %>
+    </div>
+
+    <div>
+      <%= form.submit 'Update' %>
+    </div>
+  <% end %>
+</body>

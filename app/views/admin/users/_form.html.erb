@@ -25,7 +25,7 @@
 
   <div class="field">
     <%= form.label :skills %>
-    <%= form.select :skills, options_for_select(['All Rounder', 'Batting', 'Bowling']), {}, class: 'form-control' %>
+    <%= form.select :skills, options_for_select(['Batting', 'Bowling', 'All Rounder']), {}, class: 'form-control' %>
     <%#= form.text_field :skills, required: true %>
   </div>
 
@@ -42,7 +42,7 @@
 
   <div class="field">
     <%= form.label :gender %>
-    <%= form.text_field :gender %>
+    <%= form.select :gender, options_for_select(['M', 'F']), {}, class: 'form-control' %>
   </div>
 
   <div class="field">

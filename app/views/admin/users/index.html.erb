@@ -1,105 +1,204 @@
-<title>iLead Cricket Auction</title>
-<h3 style="margin-top: 25px;">
-  <div style="display: flex; padding: 2px 8px; text-align: center; font-size: 24px;">
-<div style="border: 2px solid #333; width: 15%; margin-right: 10px;">
-  <%= link_to 'Add New Player', new_admin_user_path %>
-</div>
-<div style="border: 2px solid #333; width: 15%;">
-  <%= link_to 'Home', root_path %>
-</div>
-<div style="margin-left: 20px;">
-  <%= button_to 'Logout', "/admin_sessions/#{@admin.id}", method: :delete %>
-</div>
-</h3>
-</br><h2 style="text-align: center;">All Players</h2>
- <%= form_tag admin_search_path, method: :get, class: "form-inline my-4" do %>
-      <%# <h3 style="margin-bottom: 10px">Search for Multi User Edit</h3> %>
-      <div class="input-group">
-        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search for Multi User Edit..." %>
-        <div class="input-group-append">
-          <%= submit_tag "Search & Edit", class: "btn btn-outline-secondary", style: "border-radius: 1px;"%>
-        </div>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>iLead Cricket Auction</title>
+  <style type="text/css">
+    body {
+      background: linear-gradient(to top, #f58754, #1a237e);
+      background-color: #1a237e;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      background: linear-gradient(to right, #f57224, #1a237e); 
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 2.2em; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    }
+    h3 {
+      margin-top: 25px;
+      display: flex;
+      padding: 2px 8px;
+      text-align: center;
+      font-size: 24px;
+    }
+    h3 > div {
+      margin-right: 10px;
+    }
+    .button-container {
+      border: 2px solid #fff;
+      width: 15%;
+    }
+    .button-container:last-child {
+      margin-left: 20px;
+    }
+    .button-container a,
+    .button-container input[type="submit"] {
+      display: block;
+      padding: 8px;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      background-color: #1a237e;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .button-container input[type="submit"] {
+      width: 100%;
+    }
+    h2 {
+      text-align: center;
+    }
+    .form-inline {
+      text-align: center;
+      margin: 20px auto;
+    }
+    .form-inline .input-group {
+      display: inline-flex;
+    }
+    .form-inline .form-control {
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      margin-right: 5px;
+    }
+    .form-inline .btn {
+      padding: 8px 12px;
+      background-color: #f57224;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+    table th, table td {
+      border: 2px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+    table th {
+      background-color: #f57224;
+      color: white;
+    }
+    table td {
+      background-color: #1a237e;
+      color: #f58754;
+    }
+    .pagination {
+      margin-top: 20px;
+      list-style-type: none;
+      display: flex;
+      justify-content: center;
+    }
+    .pagination li {
+      margin: 0 5px;
+    }
+    .pagination a {
+      text-decoration: none;
+      padding: 8px 12px;
+      background-color: #f57224;
+      color: white;
+      border-radius: 4px;
+    }
+    .pagination .active a {
+      background-color: #1a237e;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <b>iLead Cricket Auction</b>
+  </header>
+  <h3>
+    <div class="button-container">
+      <%= link_to 'Add New Player', new_admin_user_path %>
+    </div>
+    <div class="button-container">
+      <%= link_to 'Home', root_path %>
+    </div>
+    <div class="button-container">
+      <%= button_to 'Logout', "/admin_sessions/#{@admin.id}", method: :delete %>
+    </div>
+  </h3>
+  <!-- <h2>All Players</h2> -->
+  <%= form_tag admin_search_path, method: :get, class: "form-inline" do %>
+    <div class="input-group">
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search for Multi User Edit..." %>
+      <div class="input-group-append">
+        <%= submit_tag "Search & Edit", class: "btn btn-outline-secondary" %>
       </div>
+    </div>
+  <% end %>
+  <% if !@query.present? %>
+    <table>
+      <thead>
+        <tr>
+          <th style="padding-right: 50px; padding-left: 20px;">ID</th>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td style="padding-right: 50px; padding-left: 20px;"><%= user.id %></td>
+            <td style="padding-right: 100px;"><%= user.full_name %></td>
+            <td style="padding-right: 100px;"><%= user.email %></td>
+            <td>
+              <p style="word-spacing: 100px;">
+                <%= link_to 'View', admin_user_path(user), style: "color: #f57224;" %>
+                <%#= link_to 'Edit', edit_admin_user_path(user), style: "color: #f57224;" %>
+              </p>              
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% unless params["query"] == "" %>
+      <ul class="pagination">
+        <%= will_paginate @users, previous_label: 'Previous', next_label: 'Next', page_links: false, class: 'page-item', link_class: 'page-link' %>
+      </ul>
     <% end %>
-<%if !@query.present?%>
-<table style="width: 100%;">
-  <thead>
-    <tr>
-      <th style="padding-right: 50px; padding-left: 20px;">ID</th>
-      <th>Full Name</th>
-      <th>Email</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td style="padding-right: 50px; padding-left: 20px;"><%= user.id %></td>
-        <td style="padding-right: 100px;"><%= user.full_name %>
-        <%#= render partial: 'edit_full_name', locals: { user: user } %>
-        </td>
-
-        <td style="padding-right: 100px;"><%= user.email %>
-        <%#= render partial: 'edit_email', locals: { user: user } %>
-        </td>
-        <td>
-          <p style="word-spacing: 100px;"> <%= link_to 'View', admin_user_path(user) %>
-          <%= link_to 'Edit', edit_admin_user_path(user) %></p>
-          <%#= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<% unless params["query"] == "" %>
-<ul class="pagination justify-content-center">
-  <%= will_paginate @users, previous_label: 'Previous', next_label: 'Next', page_links: false, class: 'page-item', link_class: 'page-link' %>
-</ul>
-<%end%>
-<%else%>
-  <table>
-  <thead>
-    <tr>
-      <th style="padding-right: 50px; padding-left: 20px;">ID</th>
-      <th>Full Name</th>
-      <th>Email</th>
-      <th>Skill</th>
-      <th>Level</th>
-      <th>Image</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td style="padding-right: 50px; padding-left: 20px;"><%= user.id %></td>
-        <td style="padding-right: 100px;">
-        <%= render partial: 'edit_full_name', locals: { user: user } %>
-        </td>
-
-        <td style="padding-right: 100px;">
-        <%= render partial: 'edit_email', locals: { user: user } %>
-        </td>
-
-        <td style="padding-right: 100px;">
-        <%= render partial: 'edit_skill', locals: { user: user } %>
-        </td>
-
-        <td style="padding-right: 100px;">
-        <%= render partial: 'edit_level', locals: { user: user } %>
-        </td>
-
-        <td style="padding-right: 100px;">
-        <%= render partial: 'edit_image', locals: { user: user } %>
-        </td>
-
-        <td style="padding-right: 100px;">
-          <p style="word-spacing: 40px;"> <%= link_to 'View', admin_user_path(user) %>
-          <%= link_to 'Edit', edit_admin_user_path(user) %></p>
-          <%#= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%end%>
+  <% else %>
+    <table>
+      <thead>
+        <tr>
+          <th style="padding-right: 50px; padding-left: 20px;">ID</th>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Skill</th>
+          <th>Level</th>
+          <th>Image</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td style="padding-right: 50px; padding-left: 20px;"><%= user.id %></td>
+            <td style="padding-right: 100px;"><%= render partial: 'edit_full_name', locals: { user: user } %></td>
+            <td style="padding-right: 100px;"><%= render partial: 'edit_email', locals: { user: user } %></td>
+            <td style="padding-right: 100px;"><%= render partial: 'edit_skill', locals: { user: user } %></td>
+            <td style="padding-right: 100px;"><%= render partial: 'edit_level', locals: { user: user } %></td>
+            <td style="padding-right: 100px;"><%= render partial: 'edit_image', locals: { user: user } %></td>
+            <td style="padding-right: 100px;">
+              <p style="word-spacing: 40px;">
+                <%= link_to 'View', admin_user_path(user) %>
+                <%= link_to 'Edit', edit_admin_user_path(user) %>
+              </p>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</body>
+</html>

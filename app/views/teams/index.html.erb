@@ -1,32 +1,103 @@
-<title>Manage Teams: iLead Cricket Auction</title>
-<table style="width: 100%;">
-    <thead>
-      <tr>
-        <th style="padding-right: 50px; padding-left: 20px;">ID</th>
-        <th>Name</th>
-        <th>Purse</th>
-        <th>Total Players</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @teams.each do |team| %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Manage Teams: iLead Cricket Auction</title>
+  <style type="text/css">
+    body {
+      background: linear-gradient(to top, #f58754, #1a237e);
+      background-size: cover; /* Ensures the background covers the entire viewport */
+      background-attachment: fixed; /* Keeps the background fixed while scrolling */
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for content */
+      padding: 20px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    h2 {
+      text-align: center;
+      color: #f58754;
+    }
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+    table th, table td {
+      border: 2px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+    table th {
+      background-color: #f57224;
+      color: white;
+    }
+    table td {
+      background-color: #1a237e;
+      color: #f58754;
+    }
+    .actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .actions a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #f57224;
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+      margin: 10px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .actions a:hover {
+      background-color: #1a237e;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Manage Teams</h2>
+
+    <table>
+      <thead>
         <tr>
-          <td style="padding-right: 50px; padding-left: 20px;"><%= team.id %></td>
-          <td style="padding-right: 100px;"><%= team.name %>
-          <%#= render partial: 'edit_full_name', locals: { team: team } %>
-          </td>
-  
-          <td style="padding-right: 100px;"><%= team.purse %>
-          <%#= render partial: 'edit_email', locals: { team: team } %>
-          </td>
-          <td>
-            <p style="word-spacing: 100px;"> <%= link_to 'View', team_path(team) %>
-            <%= link_to 'Edit', edit_team_path(team) %></p>
-            <%#= link_to 'Destroy', admin_team_path(team), method: :delete, data: { confirm: 'Are you sure?' } %>
-          </td>
+          <th style="padding-right: 50px; padding-left: 20px;">ID</th>
+          <th>Name</th>
+          <th>Purse</th>
+          <th>Total Players</th>
+          <th>Actions</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= link_to 'Create Team', new_team_path %></p>
-  <%= link_to 'Home', root_path %></p>
+      </thead>
+      <tbody>
+        <% @teams.each do |team| %>
+          <tr>
+            <td style="padding-right: 50px; padding-left: 20px;"><%= team.id %></td>
+            <td style="padding-right: 100px;"><%= team.name %></td>
+            <td style="padding-right: 100px;"><%= team.purse %></td>
+            <td><%= team.total_players %></td>
+            <td>
+              <p style="word-spacing: 100px;">
+                <%= link_to 'View', team_path(team), style: "color: #f57224;" %>
+                <%= link_to 'Edit', edit_team_path(team), style: "color: #f57224;" %>
+              </p>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="actions">
+      <%= link_to 'Create Team', new_team_path, class: 'action-button' %>
+      <%= link_to 'Home', root_path, class: 'action-button' %>
+    </div>
+  </div>
+</body>
+</html>

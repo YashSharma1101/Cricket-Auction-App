@@ -1,9 +1,17 @@
 <!-- app/views/admin/users/show.html.erb -->
 <title>iLead Cricket Auction</title>
-<h2>User Details</h2>
-<p><strong>ID:</strong> <%= @admin.id %></p>
-<p><strong>Email:</strong> <%= @admin.email %></p>
+<style>
+    body{
+        display:inline-flex;
+        /* text-align: center; */
+    }
+</style>
+<body>
+<h2>User Details</h2></br>
+<p><strong>ID:</strong> <%= @admin.id %></p></br>
+<p><strong>Email:</strong> <%= @admin.email %></p></br>
 
 <%= link_to 'Edit', edit_admin_session_path(@admin) %> |
 <%= link_to 'Back', "/admin_sessions" %>
 <%= button_to "Delete", "/admin_sessions/#{@admin.id}/delete_admin", method: :delete%>
+</body>

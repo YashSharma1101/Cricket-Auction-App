@@ -6,22 +6,23 @@ class AdminSessionsController < ApplicationController
   def create
     admin = Admin.find_by(email: params[:email])
     if admin && admin.authenticate(params[:password])
-     
       session[:admin_id] = admin.id
-
-      redirect_to root_path, notice: "Logged in successfully, a new has session been started, you can now access the application."
+      admin.update_last_seen
+      flash[:success] = "A new session has been started, you can now access the application."
+      render :new
     else
-      redirect_to new_admin_session_path, notice: "Wrong email/password."
-      # flash.now[:alert] 
-      # render :new
+      flash[:error] = "Wrong email/password."
+      render :new
     end
   end
+  
 
   def edit
     @admin = Admin.find_by(id: params[:id])
   end
 
   def destroy
+    reset_session
     session[:admin_id] = nil
     redirect_to root_path, notice: "Logged out successfully, login again to access the application."
   end

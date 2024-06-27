@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'dashboard', to: 'dashboard#index', as: 'dashboard'
     get 'search', to: 'users#search', as: 'search'
+    post 'view_access_form', to: 'users#access_form', as: 'access_form'
+    get 'view_access_form', to: 'users#view_access_form', as: 'view_access_form'
+    # resources :access_forms
     resources :users do
       member do
         patch :update_full_name

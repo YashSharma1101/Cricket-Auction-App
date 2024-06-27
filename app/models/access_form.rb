@@ -1,0 +1,2 @@
+class AccessForm < ApplicationRecord
+end

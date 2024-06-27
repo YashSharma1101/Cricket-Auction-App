@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TheCricAuction - Home</title>
+  <link rel="icon" type="image/x-icon" href="assets/images/applogo.png">
   <style>
     /* Global styles */
     body {
@@ -11,7 +12,7 @@
       background-color: #1a237e;
       background-size: cover; /* Ensures the background covers the entire viewport */
       background-attachment: fixed;
-      font-family: Arial, sans-serif;
+      font-family: Trebuchet MS;
       margin: 0;
       padding: 0;
       display: flex;
@@ -81,6 +82,26 @@
     .inner-home a:hover {
       background-color: #f58754;
     }
+    .logo img {
+	    max-height: 40px;
+	    margin: 0 10px;
+	  }
+    .footer {
+      background-color: #f1f1f1;
+      padding: 5px;
+      text-align: center;
+      /* position: fixed; */
+      left: 0;
+      bottom: 0;
+      width: 100%;
+    }
+    .footer a {
+      color: #1a237e; /* Customize the color to match your logo color */
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -105,7 +126,10 @@
   </div>
 
   <div class="container info-section">
-	<h2>About TheCricAuction</h2>
+	<h2>
+    <div class="logo">
+	    <img src="/assets/applogo.png" alt="TheCricAuction">
+    </div></h2>
 	<p>TheCricAuction is a specialized platform designed for cricket leagues, offering:</p>
 	<!-- <ul style="list-style-type: none;"> -->
 	<ul>
@@ -118,7 +142,11 @@
 	  <li>Customizable features to adapt to different league requirements.</li>
 	</ul>
 	<p>Empower your cricket league with TheCricAuction's tailored features and elevate your management experience today.</p>
+  <div class="footer">
+    <p>Contact us: <a href="mailto:info.thecricauction@gmail.com">info.thecricauction@gmail.com</a></p>
   </div>
+</div>
+  
   
 </body>
 </html>

@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_action :require_admin_login
+  before_action :require_admin_login, except: [:access_form, :view_access_form]
   skip_before_action :verify_authenticity_token
 
   def index
@@ -83,7 +83,7 @@ class Admin::UsersController < ApplicationController
   def associate_photo
     @user = User.find(params[:id])
     @user.photo_attachment.attach(params[:user][:photo_attachment])
-    redirect_to associate_photos_users_path, notice: "Photo associated successfully"
+    redirect_to associate_photos_users_path, notice: "Photo associated successfully."
   end
 
   def search
@@ -91,9 +91,24 @@ class Admin::UsersController < ApplicationController
     users = User.paginate(page: params[:page], per_page: 5)
     @admin = Admin.find_by(id: session[:admin_id])
     @query = params[:query]
-    # @users = users.where("full_name LIKE ?", "%#{@query}%")
+    #@users = users.where("full_name LIKE ?", "%#{@query}%")
     @users = users.where("full_name ILIKE ?", "%#{@query}%")
     render :index
+  end
+
+  def view_access_form
+    @access_form = AccessForm.new
+  end
+
+  def access_form
+    @access_form = AccessForm.new(access_params)
+    if @access_form.save
+      AccessFormMailer.new_access_form(@access_form).deliver_now
+      flash[:success] = "Your access request submitted successfully."
+    else
+      flash[:error] = "There was an error submitting your request. Please try again."
+    end
+    render :view_access_form
   end
 
   private
@@ -107,4 +122,7 @@ class Admin::UsersController < ApplicationController
     params.require(:user).permit(:full_name, :email, :skills, :level_of_skill, :team, :gender, :photo_attachment)
   end
 
+  def access_params
+    params.permit(:name, :email, :description)
+  end
 end

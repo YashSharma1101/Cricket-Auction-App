@@ -5,11 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-unless Admin.find_by(email: 'admin@example.com')
+admin = Admin.find_by(email: 'admin@example.com')
+if Admin.find_by(email: 'admin@example.com')
+    admin.update(password: "adminpassword") 
+else
     Admin.create!(
       email: 'admin@example.com',
-      password: 'password',
-      password_confirmation: 'password'
+      password: 'adminpassword',
+      password_confirmation: 'adminpassword'
     )
 end
+unless Admin.find_by(email: 'ilead@thecricauction.com')
+  Admin.create!(
+    email: 'ilead@thecricauction.com',
+    password: 'tcailead',
+    password_confirmation: 'tcailead'
+  )
+end
 User.where(price: nil).update_all(price: 0)
+Admin.find_each do |admin|
+  admin.update(last_seen: Time.current)
+end

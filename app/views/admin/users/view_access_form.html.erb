@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>iLead Cricket Auction - Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TheCricAuction - Home</title>
+  <link rel="icon" type="image/x-icon" href="assets/images/applogo.png">
   <style>
+    /* Global styles */
     body {
       background: linear-gradient(to top, #f58754, #1a237e);
       background-size: cover; /* Ensures the background covers the entire viewport */
@@ -41,7 +44,9 @@
       text-align: left; /* Align label text to the left */
     }
     .field input[type="email"],
-    .field input[type="password"] {
+    .field input[type="text"],
+    .field input[type="number"],
+    .field textarea {
       width: 100%;
       padding: 8px;
       border: 1px solid #ccc;
@@ -128,35 +133,43 @@
       </div>
     </h2>
     <div style="background: -webkit-linear-gradient(#f58754, #1a237e); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-      <h3 style="color: #1a237e;">Login to access</h3>
-      <p style="color: #f58754;">Please enter your email and password!</p>
+      <h3 style="color: #1a237e;">Request accessibility credentials</h3>
     </div>
-
-    <%= form_with(url: admin_sessions_path, method: :post) do |form| %>
+    <%= form_with(url: admin_access_form_path, method: :post) do |form| %>
       <div class="field">
-        <%= form.label :email %>  
+        <%= form.label :name %>
+        <%= form.text_field :name, required: true %>
+      </div>
+
+      <div class="field">
+        <%= form.label :email %>
         <%= form.email_field :email, required: true %>
       </div>
 
       <div class="field">
-        <%= form.label :password %>
-        <%= form.password_field :password, required: true %>
+        <%= form.label :contact_number %>
+        <%= form.number_field :contact_number, required: true %>
+      </div>
+
+      <div class="field">
+        <%= form.label :description %>
+        <%= form.text_area :description, required: true, rows: 10, cols: 50 %>
       </div>
 
       <div class="actions">
-        <%= form.submit 'Login' %>
+        <%= form.submit 'Send Request' %>
       </div>
     <% end %>
     <div>
-      <p><a href="/admin/view_access_form">Request Access Here</a></p>
+      <p><a href="/admin_sessions/new">Login Here</a></p>
     </div>
   </div>
 
   <!-- Popup for success message -->
   <div class="overlay" id="popupOverlay"></div>
   <div class="popup" id="successPopup">
-    <h3 style="color: green;">Success!</h3>
-    <p>A new session has been started, you can now access the application.</p>
+    <h3 style="color: green;">Request Sent!</h3>
+    <p>You will shortly receive a mail for the next steps to access TheCricAuction.</p>
     <button id="closePopupButton">Okay</button>
   </div>
 
@@ -164,7 +177,7 @@
   <div class="overlay" id="errorPopupOverlay"></div>
   <div class="popup" id="errorPopup">
     <h3 style="color:red;">Error!</h3>
-    <p>Wrong email/password. Please try again.</p>
+    <p>There was an error submitting your request. Please try later.</p>
     <button id="closeErrorPopupButton">Okay</button>
   </div>
 
@@ -181,7 +194,7 @@
         closePopupButton.addEventListener("click", function () {
           successPopup.style.display = "none";
           popupOverlay.style.display = "none";
-          window.location.href = "<%= root_path %>"; // Redirect to root path after closing popup
+          window.location.href = "<%= new_admin_session_path %>"; // Redirect to login page after closing popup
         });
       <% elsif flash[:error] %>
         const errorPopupOverlay = document.getElementById("errorPopupOverlay");

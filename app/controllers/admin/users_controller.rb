@@ -123,6 +123,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def access_params
-    params.permit(:name, :email, :description)
+    params.permit(:name, :email, :description, :contact_number)
   end
 end

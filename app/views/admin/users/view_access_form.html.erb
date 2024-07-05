@@ -149,7 +149,8 @@
 
       <div class="field">
         <%= form.label :contact_number %>
-        <%= form.number_field :contact_number, required: true %>
+        <%= form.number_field :contact_number, step: 1, min: 10, max:10, required: true  %>
+        <%#= form.number_field :contact_number, {}, max: 10, required: true %>
       </div>
 
       <div class="field">

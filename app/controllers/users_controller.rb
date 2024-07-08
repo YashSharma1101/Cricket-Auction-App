@@ -88,11 +88,9 @@ class UsersController < ApplicationController
   end
 
   def send_mail
-    byebug
     # @user = User.all
     # @user.each do |user| 
       user = User.find_by(email: "yashsharma0787@gmail.in")
-      byebug
       if user.price == 0 && user.email.present?
         AuctionMailer.player_report(user).deliver_later
       end
@@ -101,7 +99,26 @@ class UsersController < ApplicationController
   
 
   def home
-      
+  end
+
+  def unsold
+  	@users = User.where(team: nil).paginate(page: params[:page], per_page: 1)
+    @player_number = 0
+    @teams_with_latest_users = User.where.not(team: [nil, ""])
+                                .group(:team)
+                                .order('MAX(updated_at) DESC')
+                                .pluck('MAX(updated_at) as latest_purchase_time, team, MAX(full_name) as latest_user_name, MAX(price) as latest_user_price')
+
+    # @users_by_team = User.where.not(team: nil)
+    #                  .group(:team)
+    #                  .order('team, MAX(updated_at) DESC')
+    #                  .pluck('team, MAX(updated_at) as latest_purchase_time, GROUP_CONCAT(full_name) as user_names, GROUP_CONCAT(price) as user_prices')
+
+    @users_by_team = User.where.not(team: nil)
+                     .group(:team)
+                     .order('team, MAX(updated_at) DESC')
+                     .select('team, MAX(updated_at) as latest_purchase_time, STRING_AGG(full_name, \', \') as user_names, STRING_AGG(price::text, \', \') as user_prices')
+
   end
 
   private

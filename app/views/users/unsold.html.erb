@@ -13,377 +13,344 @@
 	</head>
 	
 	<style type="text/css">
-
-	  body {
-	    font-family: 'Trebuchet MS';
-	    background-color:	#0a0a2a;
-		background-size: cover; /* Ensures the background covers the entire viewport */
+    body {
+        font-family: 'Trebuchet MS';
+        background-color:	#0a0a2a;
+        background-size: cover; /* Ensures the background covers the entire viewport */
         background-attachment: fixed;
-<%# 	    background-color: #1a237e;  %>
-	    margin: 0;
-	    padding: 10px;
-<%# 	    overflow: hidden; %>
-	  }
+        margin: 0;
+        padding: 10px;
+    }
 
-	  header {
-	    background: linear-gradient(to left, #f57224, #f58754, #1a237e); 
-	    color: #fff;
-	    text-align: center;
-	    padding: 14px;
-	    font-size: 2.0em; 
-	    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-	  }
+    header {
+        background: linear-gradient(to left, #f57224, #f58754, #1a237e); 
+        color: #fff;
+        text-align: center;
+        padding: 14px;
+        font-size: 2.0em; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    }
 
-	  .user-cards {
-	    display: flex;
-	    flex-wrap: wrap;
-	    justify-content: space-around;
-	    padding: 15px;
-	  }
-	  
-	  @keyframes slideIn {
-	    from {
-	      transform: translateX(-100%);
-	    }
-	    to {
-	      transform: translateX(0);
-	    }
-	  }
+    .user-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 15px;
+    }
+    
+    @keyframes slideIn {
+        from {
+        transform: translateX(-100%);
+        }
+        to {
+        transform: translateX(0);
+        }
+    }
 
-	  .user-info-card {
-	    border: 2px solid #f57224; 
-	    border-radius: 12px;
-	    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-	    background-color: #fff; 
-	    padding: 30px;
-	    height: 700px;
-	    width: 1225px; 
-	    margin: 10px;
-	    display: flex;
-	    position: relative;
-	    background-image: url("/assets/bg.png"); 
-	    background-size: cover;
-	    background-repeat: no-repeat;
-	    background-position: center;
-	    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-	    transition: transform 0.3s ease-in-out;
-	    animation: slideIn 1s ease-out; 
-	  }
+    .user-info-card {
+        border: 2px solid #f57224; 
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: #fff; 
+        padding: 30px;
+        height: 700px;
+        width: 1225px; 
+        margin: 10px;
+        display: flex;
+        position: relative;
+        background-image: url("/assets/bg.png"); 
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+        animation: slideIn 1s ease-out; 
+    }
 
-	  .user-info-card:hover {
-	    transform: scale(1.03);
-	  }
+    .user-info-card:hover {
+        transform: scale(1.03);
+    }
 
-	  .player-photo {
-	    flex: 2;
-	    position: relative;
-	    overflow: hidden;
-	  }
+    .player-photo {
+        flex: 2;
+        position: relative;
+        overflow: hidden;
+    }
 
-	  .player-photo img {
-	    width: 85%;
-	    height: 100%;
-	    object-fit: cover;
-	    border-radius: 12px; 
-	    border: 3px solid #fff; 
-	    box-sizing: border-box; 
-	  }
+    .player-photo img {
+        width: 85%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 12px; 
+        border: 3px solid #fff; 
+        box-sizing: border-box; 
+    }
 
-	  .user-id {
-	    position: absolute;
-	    width: 83%;
-	    bottom: 3px;
-	    left: 3px;
-	    right: 0;
-	    text-align: center;
-	    background-color: rgba(0, 0, 0, 0.7);
-	    color: #fff;
-	    padding: 10px;
-	    font-size: 1.5em;
-	    border-radius: 0 0 12px 12px;
-	  }
+    .user-id {
+        position: absolute;
+        width: 83%;
+        bottom: 3px;
+        left: 3px;
+        right: 0;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        padding: 10px;
+        font-size: 1.5em;
+        border-radius: 0 0 12px 12px;
+    }
 
-	  .player-details {
-	    flex: 3;
-	    padding: 20px;
-	    text-align: left;
-	    color: black;
-	    color: #fff;
-	    background-color: rgba(0, 0, 0, 0.7); 
-	    border-radius: 12px;
-	    display: flex;
-	    flex-direction: column;
-	    justify-content: center;
-	    border: 2px solid #fff; 
-	    box-sizing: border-box;
-	  }
+    .player-details {
+        flex: 3;
+        padding: 20px;
+        text-align: left;
+        color: black;
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.7); 
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: 2px solid #fff; 
+        box-sizing: border-box;
+    }
 
-	  .player-name {
-	    padding: 20px;
-	    text-align: center;
-	    color: #fff; 
-	    font-size: 3.0em;
-	    margin-bottom: 10px;
-	  }
+    .player-name {
+        padding: 20px;
+        text-align: center;
+        color: #fff; 
+        font-size: 3.0em;
+        margin-bottom: 10px;
+    }
 
-	  .player-details p {
-	    text-align: center;
-	    color: black;
-	    color: #fff; 
-	    font-size: 1.8em; 
-	    margin-bottom: 12px; 
-	    border: 1px solid #fff; 
-	    box-sizing: border-box;
-	  }
+    .player-details p {
+        text-align: center;
+        color: black;
+        color: #fff; 
+        font-size: 1.8em; 
+        margin-bottom: 12px; 
+        border: 1px solid #fff; 
+        box-sizing: border-box;
+    }
 
-	  .base-price {
-	    text-align: center;
-	    margin-top: 20px; 
-	    color: black;
-	    padding: 0px;
-	    border-radius: 12px; 
-	    font-size: 2.3em; 
-	  }
+    .base-price {
+        text-align: center;
+        margin-top: 20px; 
+        color: black;
+        padding: 0px;
+        border-radius: 12px; 
+        font-size: 2.3em; 
+    }
 
-	  .logo img {
-	    max-height: 40px;
-	    margin: 0 10px;
-	  }
+    .logo img {
+        max-height: 40px;
+        margin: 0 10px;
+    }
 
-	  .pagination {
-	    display: flex;
-	    justify-content: center;
-	    align-items: center;
-	    margin-top: 20px;
-	  }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
 
-	  .pagination a, .pagination span {
-	    padding: 10px;
-	    margin: 0 5px;
-	    font-size: 1.0em;
-	    color: #fff;
-	    text-decoration: none;
-	    border: 2px solid #f57224;
-	    border-radius: 5px;
-	    background-color: #f57224;
-	  }
+    .pagination a, .pagination span {
+        padding: 10px;
+        margin: 0 5px;
+        font-size: 1.0em;
+        width: 65x;
+        height: 45px;
+        color: #fff;
+        text-decoration: none;
+        border: 2px solid #f57224;
+        border-radius: 5px;
+        background-color: #f57224;
+    }
 
-	  .pagination .disabled, .pagination .active {
-	    color: #fff;
-	    background-color: #f58754;
-	    border: 2px solid #f58754;
-	  }
+    .pagination .disabled, .pagination .active {
+        color: #fff;
+        background-color: #f58754;
+        border: 2px solid #f58754;
+    }
 
-	  .player-form {
-	    display: flex;
-	    flex-direction: column;
-	    align-items: center;
-	    margin-top: 20px; 
-	  }
+    .player-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px; 
+    }
 
-	  .player-form select,
-	  .player-form input {
-	    width: 100%;
-	    padding: 10px;
-	    margin-bottom: 10px;
-	    box-sizing: border-box;
-	  }
+    .player-form select,
+    .player-form input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
 
-	  .player-form button {
-	    width: 100%;
-	    padding: 10px;
-	    background: #1a237e; 
-	    color: #fff;
-	    border: none;
-	    border-radius: 5px;
-	    cursor: pointer;
-	    transition: background-color 0.3s ease; 
-	  }
+    .player-form button {
+        width: 100%;
+        padding: 10px;
+        background: #1a237e; 
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease; 
+    }
 
-	  .player-form button:hover {
-	    background-color: #f58754; 
-	  }
+    .player-form button:hover {
+        background-color: #f58754; 
+    }
 
-	  .increment-btn,
-	  .btn-primary {
-	  	background: #1a237e;
-	    margin-left: 5px;
-	    padding: 10px;
-	    border: none;
-	    font-size: 1.0em; 
-	    border-radius: 5px;
-	    cursor: pointer;
-	    transition: background-color 0.3s ease; 
-	  }
+    .increment-btn,
+    .btn-primary {
+        background: #1a237e;
+        margin-left: 5px;
+        padding: 10px;
+        border: none;
+        font-size: 1.0em; 
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease; 
+    }
 
-	  .increment-btn:hover,
-	  .btn-primary:hover {
-	  	color: black;
-	    background-color: #f58754; 
-	  }
+    .increment-btn:hover,
+    .btn-primary:hover {
+        color: black;
+        background-color: #f58754; 
+    }
 
-	  .flex-container {
-	    display: flex;
-	    align-items: center;
-	  }
+    .flex-container {
+        display: flex;
+        align-items: center;
+    }
 
-	  .current-price {
-	    width: 550px; 
-	    text-align: center;
-	    margin-right: 10px;
-	    margin-left: 10px; 
-	  }
+    .current-price {
+        width: 550px; 
+        text-align: center;
+        margin-right: 10px;
+        margin-left: 10px; 
+    }
 
-	  .custom-popup {
-	    display: none;
-	    position: fixed;
-	    top: 50%;
-	    left: 50%;
-	    transform: translate(-50%, -50%);
-	    padding: 20px;
-	    background-color: #fff;
-	    border: 2px solid #f57224;
-	    border-radius: 5px;
-	    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-	    z-index: 1000;
-	  }
+    .custom-popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background-color: #fff;
+        border: 2px solid #f57224;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+    }
 
-	  .custom-popup p {
-	    margin: 0;
-	    font-size: 1.2em;
-	    color: #333;
-	  }
+    .custom-popup p {
+        margin: 0;
+        font-size: 1.2em;
+        color: #333;
+    }
 
-	  .custom-popup-buttons {
-	    margin-top: 10px;
-	    text-align: center;
-	  }
+    .custom-popup-buttons {
+        margin-top: 10px;
+        text-align: center;
+    }
 
-	  .custom-popup-buttons button {
-	    padding: 10px 20px;
-	    margin: 0 10px;
-	    font-size: 1em;
-	    cursor: pointer;
-	  }
+    .custom-popup-buttons button {
+        padding: 10px 20px;
+        margin: 0 10px;
+        font-size: 1em;
+        cursor: pointer;
+    }
 
-	  .custom-popup-buttons button.primary {
-	    background-color: #f57224;
-	    color: #fff;
-	    border: none;
-	    border-radius: 5px;
-	  }
+    .custom-popup-buttons button.primary {
+        background-color: #f57224;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+    }
 
-	  .custom-popup-buttons button.secondary {
-	    background-color: #ddd;
-	    color: #333;
-	    border: none;
-	    border-radius: 5px;
-	  }
-	  .bidButton{
-	  	background: linear-gradient(to right, #f57224, #f58754);
-	  	font-size: 1.8em;
-	  	border: 1px solid #fff;
-	  	box-sizing: border-box;
-	  	color: lightgoldenrodyellow;
-	  }
+    .custom-popup-buttons button.secondary {
+        background-color: #ddd;
+        color: #333;
+        border: none;
+        border-radius: 5px;
+    }
+    .bidButton{
+        background: linear-gradient(to right, #f57224, #f58754);
+        font-size: 1.8em;
+        border: 1px solid #fff;
+        box-sizing: border-box;
+        color: lightgoldenrodyellow;
+    }
 
-	  .teams-table {
-		  background: linear-gradient(to right, #f57224, #f58754);
-		  font-size: 1.1em;
-		  color: black;
-		  width: 100%;
-		  margin-top: 20px;
-		  border-collapse: collapse;
-		  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-		 }
+    .teams-table {
+    background: linear-gradient(to right, #f57224, #f58754);
+    font-size: 1.1em;
+    color: black;
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
 
-		.teams-table th, .teams-table td {
-		  border: 2px solid #ddd;
-		  padding: 12px;
-		  text-align: center;
-		}
+    .teams-table th, .teams-table td {
+      border: 2px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
 
-		.teams-table th {
-			color: #fff;
-		  background-color: #1a237e;
-		}
+    .teams-table th {
+      color: #fff;
+      background-color: #1a237e;
+    }
 
-		.teams-table tr:nth-child(even) {
-		  background-color: #f58754;
-		}
+    .teams-table tr:nth-child(even) {
+      background-color: #f58754;
+    }
 
-		.teams-table tr:hover {
-		  background-color: #f57224;
-		}
-	 .alert-container {
-	      text-align: center;
-	      margin: 20px 0;
-	    }
+    .teams-table tr:hover {
+      background-color: #f57224;
+    }
+    .alert-container {
+      text-align: center;
+      margin: 20px 0;
+    }
 
     .alert {
-    	font-size: 1.0em;
-    	margin-top: 10px;
-      padding: 15px;
-      margin: 0 auto;
-      width: 50%; 
-      box-sizing: border-box;
-      border-radius: 5px;
-      margin-bottom: 10px;
+        font-size: 1.0em;
+        margin-top: 10px;
+    padding: 15px;
+    margin: 0 auto;
+    width: 50%; 
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-bottom: 10px;
     }
 
     .alert-success {
-      background-color: #4CAF50;
-      color: white;
+    background-color: #4CAF50;
+    color: white;
     }
 
     .alert-danger {
-      background-color: #ff7043;
-      color: white;
+    background-color: #ff7043;
+    color: white;
     }
-	  center {
-	    margin-top: 20px;
-	  }
-<%# @keyframes continuousMove {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-p.animation-text {
-  color: white;
-  font-size: 1.0em;
-  white-space: nowrap;
-  overflow: hidden;
-  animation: continuousMove 10s linear infinite;
-  display: inline-block;
-}
-
-p.animation-text:hover {
-  animation-play-state: paused;
-} %>
+    center {
+        margin-top: 20px;
+    }
 	</style>
 
 	<header>
 	  <div class="logo">
-	    <img src="//assets/logo.png" alt="">
+	    <!-- <img src="https://i.postimg.cc/yY8nQHhg/i-LEAD-logo-removebg-preview.png" alt="iLead Logo"> -->
 		<b>iLead Cricket League</b>
 	  </div>
-	  <%# <img src="/assets/logo.png" alt="League Logo" height="50" width="50"> 
-	  <span>iLead Cricket League</span> %>
 	</header>
 	<body>
-    <!-- <% if notice %>
-      <div class="alert alert-success"><%= notice %></div>
-    <% end %>
-    <% if alert %>
-      <div class="alert alert-danger"><%= alert %></div>
-    <% end %> -->
-	<%#= flash[:notice] %>
-	<%#= flash[:alert]%>
-
 		<div class="user-cards">
 		  <% @users.each do |user| %>
 		    <div class="user-info-card">
@@ -439,7 +406,6 @@ p.animation-text:hover {
 		            </p>
 		          <% end %>
 		        </div>
-		        <%# <p style="color: white; font-size: 1.2em;">Developed By: Yash Sharma</p> %>
 		      </div>
 		    </div>
 		    <div class="teams-data">
@@ -454,7 +420,6 @@ p.animation-text:hover {
 
 		        <% half_teams.each_with_index do |teams, index| %>
 		          <% teams.each do |team_data| %>
-		          <%#byebug%>
 		            <tr>
 		              <td><%= team_data[0] %></td>
 		              <td>₹<%= team_data[1] %></td>
@@ -478,44 +443,41 @@ p.animation-text:hover {
 		    		<tr>
 		    			<th>Total Players</th> 
 		    			<th>Sold Players</th>
-		    			<th>Yet to be Auctioned</th>
+		    			<th>Not Sold/Auctioned</th>
 		    		</tr>
 		    		<tr>
 		    			<td><%= User.count %></td>
 		    			<td><%=Team.pluck(:total_players).sum%></td>
-		    			<td><%= @users.total_pages - @users.current_page %></td>
+              <td><%= @users.where(team: nil).count %></td>
+		    			<!-- <td><%= @users.total_pages - @users.current_page %></td> -->
 		    		</tr>		
 		    	</table>
-		    	<%# <p style="color: white; font-size: 1.0em;">Auction App | Developed By: Yash Sharma</p> %>
 		    </div>
-		    	<p style="color: white; font-size: 1.0em;"> <marquee width="100%" behavior="scroll" scrollamount="10">
-     <%unless @teams_with_latest_users.empty? %>
-     <%#unless @users_by_team.empty? %>
-			<b>TheCricAuction | Developed By: Yash Sharma </b>
-			<b>|  Latest Purchased Players: </b>
-				<% @teams_with_latest_users.each do |team_info| %>
-			  	<b><%= team_info[1] %>: </b>
-			    <%= "#{team_info[2]} (Sold for ₹#{team_info[3]})" %>
-				<% end %>
-<% team_info_strings = @users_by_team.map do |team_info| %>
-  <b><%#= team_info[0]:</b> %>
-  <% user_names = team_info[2]&.split(',') %>
-  <% user_prices = team_info[3]&.split(',') %>
-  <%#= user_names.each_with_index.map { |user_name, index| "#{user_name} (Sold for ₹#{user_prices[index]})" }.join(', ') %>
-<% end %>
-
-<%#= team_info_strings.join(' ') %>
-			<%else%>
-			TheCricAuction | Developed By: Yash Sharma | The auction is yet to start
-			<%end%>
-		</marquee>
+		    <p style="color: white; font-size: 1.0em;"> <marquee width="100%" behavior="scroll" scrollamount="10">
+          <%unless @teams_with_latest_users.empty? %>
+              <b>TheCricAuction | Developed By: Yash Sharma </b>
+              <b>|  Latest Purchased Players: </b>
+              <% @teams_with_latest_users.each do |team_info| %>
+                  <b><%= team_info[1] %>: </b>
+                  <%= "#{team_info[2]} (Sold for ₹#{team_info[3]})" %>
+              <% end %>
+              <% team_info_strings = @users_by_team.map do |team_info| %>
+                  <b><%#= team_info[0]:</b> %>
+                  <% user_names = team_info[2]&.split(',') %>
+                  <% user_prices = team_info[3]&.split(',') %>
+              <% end %>
+          <%else%>
+              TheCricAuction | Developed By: Yash Sharma | The auction is yet to start
+          <%end%>
+		    </marquee>
 			</p>	
 		  <% end %>
 		</div>
 		<nav aria-label="Page navigation example">
 		  <ul class="pagination justify-content-center">
 		    <%= will_paginate @users, previous_label: 'Previous', next_label: 'Next', page_links: false, class: 'page-item', link_class: 'page-link' %>
-		  </ul>
+      </ul>
+      <a href="<%= root_path %>" target="_blank">Home</a>
 		</nav>
 			
 		<div class="custom-popup" id="teamSelectionPopup">
@@ -562,7 +524,7 @@ p.animation-text:hover {
 	  });
 
 	  document.querySelector('.btn-primary').addEventListener('click', function (event) {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault(); 
 
     if (!document.querySelector('.increment-btn').classList.contains('bid-clicked')) {
         document.querySelector('#user_price').value = parseInt(document.querySelector('.price').innerText);
@@ -570,25 +532,20 @@ p.animation-text:hover {
 
     const selectedTeam = document.querySelector('#user_team').value;
 
-    // Check if a team is selected before playing the sound
     if (selectedTeam) {
         const confirmationMessage = `Sell player to ${selectedTeam} at ₹${document.querySelector('#user_price').value}?`;
 
-        // Show custom pop-up with confirmation message
         teamSelectionPopupMessage.innerText = confirmationMessage;
         teamSelectionPopup.style.display = 'block';
 
-        // Handle confirm button click
         teamSelectionPopupConfirm.addEventListener('click', function () {
             document.getElementById('bidSound').play();
 
-            // AJAX form submission
             $.ajax({
                 url: document.querySelector('form').action,
-                method: 'PATCH', // or 'POST' based on your setup
+                method: 'PATCH', 
                 data: $(document.querySelector('form')).serialize(),
                 success: function (data) {
-                    // Handle success if needed
                     teamSelectionPopup.style.display = 'none';
                     setTimeout(function () {
                         window.location.reload();
@@ -600,20 +557,16 @@ p.animation-text:hover {
             });
         });
 
-        // Handle cancel button click
         teamSelectionPopupCancel.addEventListener('click', function () {
-            // Hide custom pop-up
             teamSelectionPopup.style.display = 'none';
         });
     } else {
-        // Show custom pop-up for team selection notice
         teamSelectionPopupMessage.innerText = 'Select the team to confirm bid.';
         teamSelectionPopup.style.display = 'block';
         teamSelectionPopupConfirm.innerText = 'Ok';
 
-        // Handle confirm button click (which is the same as cancel in this case)
         teamSelectionPopupConfirm.addEventListener('click', function () {
-            // Hide custom pop-up
+
             teamSelectionPopup.style.display = 'none';
         });
     }
@@ -622,12 +575,10 @@ p.animation-text:hover {
 	  document.querySelectorAll('.increment-btn, .decrement-btn, .btn-primary, .current-price, #user_team').forEach(function (element) {
 	    element.style.display = 'none';
 	  });
-	  // Show bid-related elements on "Start Bid" button click
 	  document.querySelector('#startBidButton').addEventListener('click', function () {
 	    document.querySelectorAll('.increment-btn, .decrement-btn, .btn-primary, .current-price, #user_team').forEach(function (element) {
 	      element.style.display = 'block';
 	    });
-	    // Optionally, you can hide the "Start Bid" button after it's clicked
 	    document.querySelector('#startBidButton').style.display = 'none';
 	  });
 

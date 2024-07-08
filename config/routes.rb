@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       post :import
       get :associate_photos 
       get 'home', to: 'users#home'
+      get 'unsold', to: 'users#unsold'
     }
     member { patch :associate_photo }
   end

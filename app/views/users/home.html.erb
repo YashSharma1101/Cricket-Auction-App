@@ -22,7 +22,7 @@
       flex-direction: column;
     }
     .container {
-      max-width: 800px;
+      max-width: 950px;
       width: 100%;
       padding: 20px;
       margin-bottom: 50px;
@@ -61,7 +61,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 10px;
     }
     .inner-home {
       flex: 1 0 200px; /* Adjust width as needed */
@@ -121,8 +121,14 @@
       <a href="<%= teams_path %>" target="_blank">Manage Teams</a>
     </div>
     <div class="inner-home">
-      <a href="<%= users_path %>" target="_blank">Go to Auction </a>
+      <a href="<%= unsold_users_path %>" target="_blank">Unsold Player Auction</a>
     </div>
+    <div class="inner-home">
+      <a href="<%= users_path %>" target="_blank">Go to iLead Player Auction </a>
+    </div>
+    <!-- <div class="inner-home"> -->
+      <!-- <a href="<%= unsold_users_path %>" target="_blank">Unsold Auction</a> -->
+    <!-- </div> -->
   </div>
 
   <div class="container info-section">

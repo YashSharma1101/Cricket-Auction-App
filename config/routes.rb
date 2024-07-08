@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   resources :admin_sessions do
     delete '/delete_admin', to: 'admin_sessions#delete_admin', as: 'delete_admin'
+    collection do
+      patch 'reset_all_data;', to: 'admin_sessions#reset_all_data'
+    end
   end #, only: [:new, :create, :destroy]
   
   namespace :admin do
@@ -37,7 +40,10 @@ Rails.application.routes.draw do
       get 'home', to: 'users#home'
       get 'unsold', to: 'users#unsold'
     }
-    member { patch :associate_photo }
+    member { 
+      patch :associate_photo
+      patch 'reset_data', to: 'users#reset_data'
+    }
   end
   resources :teams
   resources :admin 

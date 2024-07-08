@@ -47,6 +47,26 @@
     .actions a:hover {
       background-color: #1a237e;
     }
+    .custom-button {
+      text-align: center;
+      margin-top: 20px;
+      background-color: #f57224;
+      display: inline-block;
+      padding: 10px 20px;
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+      margin: 10px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .custom-button:hover {
+      background-color: #1a237e; /* Darker shade for hover effect */
+      color: #fff; /* Keep the text color white */
+    }
+    h5{
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -70,7 +90,9 @@
     </div>
 
     <div class="actions">
-      <%#= link_to 'Edit', edit_admin_user_path(@user) %>
+      <%= button_to 'Reset the player info', reset_data_user_path(@user), 
+        class: "custom-button", 
+        method: :patch %>
       <%= link_to 'Back', admin_users_path %>
     </div>
   </div>

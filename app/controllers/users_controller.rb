@@ -121,6 +121,25 @@ class UsersController < ApplicationController
 
   end
 
+  def reset_data
+    @user = User.find_by(id: params[:id])
+    if @user&.team&.present?
+      @team = Team.find_by(name: @user&.team)
+      if @team.update(purse: @team&.purse + @user&.price, total_players: @team&.total_players-1)
+        if @user.update(team: nil, price: 0) 
+          flash[:notice] = 'Success! the player information has been reset.'
+        else
+          flash[:alert] = 'Error resting the player information.'
+        end
+      else
+        flash[:alert] = "Error resting the player's team information."
+      end
+    else
+      flash[:alert] = 'The player is not sold yet.'
+    end
+    redirect_to admin_user_path(@user)
+  end
+
   private
 
   def user_params

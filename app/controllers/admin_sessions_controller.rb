@@ -43,4 +43,15 @@ class AdminSessionsController < ApplicationController
   def show
     @admin = Admin.find(params[:id])
   end
+
+  def update
+		@team = Team&.first
+		@users = User.where(team: @team.name)
+		if Team.update_all(purse: @team.purse + @users.sum(:price), total_players: 0) && User.update_all(team: nil, price: 0)
+		  flash[:notice] = 'Success! the auction information has been reset.'
+		else
+		  flash[:alert] = 'Unable to reset auction data.'
+		end
+		redirect_to admin_sessions_path
+	end
 end

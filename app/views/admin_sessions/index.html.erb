@@ -18,5 +18,10 @@
         <%= link_to 'View Admin', admin_session_path(admin) %>
         <%#= button_to "Cancel my account", admin_session_path(admin), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" },class: "btn btn-block mt-3 custom-btn", method: :delete %></div>
 <%end%>
+<%if Team.first.present? %>
+    <%= button_to 'Reset the player info', '/admin_sessions/reset_all_data', 
+            class: "custom-button", 
+            method: :patch %>
+<%end%>
 </div>
 </body>

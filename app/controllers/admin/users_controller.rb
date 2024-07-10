@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
 
   def index
     @admin = Admin.find_by(id: session[:admin_id])
-    @users = User.paginate(page: params[:page], per_page: 7)
+    @users = User.order(:id).paginate(page: params[:page], per_page: 7)
   end
 
   def show

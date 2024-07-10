@@ -2,7 +2,7 @@ class UsersController < ApplicationController
  skip_before_action :verify_authenticity_token
  before_action :require_admin_login, except: :home
   def index
-    @users = User.where(team: nil).order(:id).paginate(page: params[:page], per_page: 1)
+    @users = User.order(:id).paginate(page: params[:page], per_page: 1)
   	# @users = User.paginate(page: params[:page], per_page: 1)
     @player_number = 0
     @teams_with_latest_users = User.where.not(team: [nil, ""])
@@ -107,7 +107,8 @@ class UsersController < ApplicationController
   end
 
   def unsold
-  	@users = User.where(team: nil).paginate(page: params[:page], per_page: 1)
+    @users = User.where(team: nil).order(:id).paginate(page: params[:page], per_page: 1)
+  	# @users = User.where(team: nil).paginate(page: params[:page], per_page: 1)
     @player_number = 0
     @teams_with_latest_users = User.where.not(team: [nil, ""])
                                 .group(:team)

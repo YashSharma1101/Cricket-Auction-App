@@ -131,6 +131,9 @@
       <%= link_to 'Home', root_path %>
     </div>
     <div class="button-container">
+      <%= link_to 'Mail Reports', send_mail_users_path %>
+    </div>
+    <div class="button-container">
       <%= button_to 'Logout', "/admin_sessions/#{@admin.id}", method: :delete %>
     </div>
   </h3>

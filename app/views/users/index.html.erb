@@ -498,7 +498,6 @@ p.animation-text:hover {
 			    <%= "#{team_info[2]} (Sold for ₹#{team_info[3]})" %>
 				<% end %>
 <% team_info_strings = @users_by_team.map do |team_info| %>
-  <b><%#= team_info[0]:</b> %>
   <% user_names = team_info[2]&.split(',') %>
   <% user_prices = team_info[3]&.split(',') %>
   <%#= user_names.each_with_index.map { |user_name, index| "#{user_name} (Sold for ₹#{user_prices[index]})" }.join(', ') %>

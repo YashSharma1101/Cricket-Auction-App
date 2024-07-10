@@ -9,7 +9,6 @@ Rails.application.routes.draw do
 
   root to: "users#home"
   get '/teams_data', to: 'users#teams_data', as: 'teams_data'
-  post '/send_mail', to: 'users#send_mail', as: 'send_mail'
 
   resources :admin_sessions do
     delete '/delete_admin', to: 'admin_sessions#delete_admin', as: 'delete_admin'
@@ -39,10 +38,12 @@ Rails.application.routes.draw do
       get :associate_photos 
       get 'home', to: 'users#home'
       get 'unsold', to: 'users#unsold'
+      get 'send_mail', to: 'users#send_mail', as: 'send_mail'
     }
     member { 
       patch :associate_photo
       patch 'reset_data', to: 'users#reset_data'
+      post 'player_mail', to: 'users#player_mail', as: 'player_mail'
     }
   end
   resources :teams

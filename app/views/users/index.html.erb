@@ -402,11 +402,11 @@ p.animation-text:hover {
 		      <% base_price = 0%>
 		      <% case user.level_of_skill %>
 		        <% when "Expert" %>
-		          <% base_price = 70%>
+		          <% base_price = 250%>
 		        <% when "Intermediate" %>
-		          <% base_price = 50%>
+		          <% base_price = 150%>
 		        <% when "Beginner" %>
-		          <% base_price = 30%>
+		          <% base_price = 50%>
 		      <% end %>
 		      <div class="player-details">
 		        <h2 class="player-name"><b><%= user.full_name %></b></h2>
@@ -643,11 +643,11 @@ p.animation-text:hover {
 	  }); 
 	</script>
 
-	<div> 
+<%# 	<div> 
 	   <h3>Import User Data</h3>
 	  <%= form_tag import_users_path, multipart: true do %>
-	    <%= csrf_meta_tags %>
-	    <%= file_field_tag :file %>
-	    <%= submit_tag "Import CSV" %>
-	  <% end %>
-	</div> 
+	    <%#= csrf_meta_tags %>
+	    <%#= file_field_tag :file %>
+	    <%#= submit_tag "Import CSV" %>
+	  <%# end %>
+	<%# </div>  %> 

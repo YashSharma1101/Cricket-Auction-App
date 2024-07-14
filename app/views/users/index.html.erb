@@ -61,7 +61,8 @@
 	    margin: 10px;
 	    display: flex;
 	    position: relative;
-	    background-image: url("/assets/bg.png"); 
+	    background-image: url("https://i.postimg.cc/HkbrSWc5/bg.png");
+<%# 	    background-image: url("/assets/bg.png");  %>
 	    background-size: cover;
 	    background-repeat: no-repeat;
 	    background-position: center;
@@ -642,11 +643,11 @@ p.animation-text:hover {
 	  }); 
 	</script>
 
-	<%# <div> %>
-	  <%# <h3>Import User Data</h3> %>
-	  <%#= form_tag import_users_path, multipart: true do %>
-	    <%#= csrf_meta_tags %>
-	    <%#= file_field_tag :file %>
-	    <%#= submit_tag "Import CSV" %>
-	  <%# end %>
-	<%# </div> %>	
+	<div> 
+	   <h3>Import User Data</h3>
+	  <%= form_tag import_users_path, multipart: true do %>
+	    <%= csrf_meta_tags %>
+	    <%= file_field_tag :file %>
+	    <%= submit_tag "Import CSV" %>
+	  <% end %>
+	</div> 

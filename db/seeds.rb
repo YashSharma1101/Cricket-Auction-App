@@ -27,5 +27,3 @@ Admin.find_each do |admin|
   admin.update(last_seen: Time.current)
 end
 AccessForm.where.not(contact_number: nil).delete_all
-
-User.last.delete

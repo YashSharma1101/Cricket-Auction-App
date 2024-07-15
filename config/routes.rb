@@ -2,10 +2,16 @@
 
 Rails.application.routes.draw do
   
-  get 'teams/index'
-  get 'teams/create'
-  get 'teams/update'
-  get 'teams/destory'
+  # get 'matches/index'
+  # get 'matches/create'
+  # get 'matches/show'
+  # get 'matches/update'
+  # get 'matches/delete'
+  # get 'teams/index'
+  # get 'teams/create'
+  # get 'teams/update'
+  # get 'teams/destory'
+  resources :matches
 
   root to: "users#home"
   get '/teams_data', to: 'users#teams_data', as: 'teams_data'

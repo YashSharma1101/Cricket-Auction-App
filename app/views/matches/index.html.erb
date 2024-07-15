@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Manage Teams: iLead Cricket Auction</title>
+  <title>Matches and Points Table: iLead Cricket Auction</title>
   <style type="text/css">
     body {
       background: linear-gradient(to top, #f58754, #1a237e);
@@ -21,7 +21,7 @@
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
-    h2 {
+    h1 {
       text-align: center;
       color: #f58754;
     }
@@ -76,44 +76,85 @@
 </head>
 <body>
   <div class="container">
-     <header>
+    <header>
       <div class="logo">
         <img src="https://i.postimg.cc/HkhvqWrg/logoilead.png" alt="">
-        <b>Manage Teams</b>
+        <b>Points Table</b>
       </div>
     </header>
+
     <table>
       <thead>
         <tr>
-          <th style="padding-right: 50px; padding-left: 20px;">ID</th>
-          <th>Name</th>
-          <th>Purse/Rem. Purse</th>
-          <th>Total Players</th>
-          <th>Actions</th>
+          <th>Rank</th>
+          <th>Team</th>
+          <th>Played</th>
+          <th>Won</th>
+          <th>Lost</th>
+          <th>Points</th>
+          <th>NRR</th>
         </tr>
       </thead>
       <tbody>
-        <% @teams.each do |team| %>
+        <% @teams.each_with_index do |team, index| %>
           <tr>
-            <td style="padding-right: 50px; padding-left: 20px;"><%= team.id %></td>
-            <td style="padding-right: 100px;"><%= team.name %></td>
-            <td style="padding-right: 100px;">₹<%= team.purse %></td>
-            <td><%= team.total_players %></td>
-            <td>
-              <p style="word-spacing: 100px;">
-                <%= link_to 'View', team_path(team), style: "color: #f57224;" %>
-                <%= link_to 'Edit', edit_team_path(team), style: "color: #f57224;" %>
-              </p>
-            </td>
+            <td><%= index + 1 %></td>
+            <td><%= team.name %></td>
+            <td><%= team.matches_played %></td>
+            <td><%= team.matches_won %></td>
+            <td><%= team.matches_lost %></td>
+            <td><%= team.points%></td>
+            <td><%= team.nrr %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
 
+    <h1 style="margin-top: 25px;">Match Results</h1>
+    
+    <%if @matches.present?%>
+    <table>
+      <thead>
+        <tr>
+          <th>Match ID</th>
+          <th>Team 1</th>
+          <th>Team 2</th>
+          <th>Team 1 Total</th>
+          <th>Team 2 Total</th>
+          <th>Winner</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @matches.each_with_index do |match, index| %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= match.team1 %></td>
+            <td><%= match.team2 %></td>
+            <td><%= match.t1_r %> (<%= match.t1_o%>)</td>
+            <td><%= match.t2_r %> (<%= match.t2_o%>)</td>
+            <td>
+              <% if match.t1_r > match.t2_r %>
+                <%= match.team1 %>
+              <% else %>
+                <%= match.team2 %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to 'View', match_path(match)%>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%else%>
+      <h4 style="color: #1a237e; text-align: center;">No Matches Found</h4>
+    <%end%>
+
     <div class="actions">
-      <%= link_to 'Create Team', new_team_path, class: 'action-button' %>
-      <%= link_to 'Points Table', matches_path, class: 'action-button' %>
-      <%= link_to 'Home', root_path, class: 'action-button' %>
+      <%= link_to 'Create Match', new_match_path, class: 'action-button' %>
+      <%= link_to 'Manage Teams', teams_path, class: 'action-button' %>
+      <%= link_to 'Back to Manage', admin_users_path, class: 'action-button' %>
     </div>
   </div>
 </body>

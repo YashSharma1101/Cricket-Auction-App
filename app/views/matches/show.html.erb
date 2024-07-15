@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Match Details: iLead Cricket Auction</title>
+  <style type="text/css">
+    body {
+      background: linear-gradient(to top, #f58754, #1a237e);
+      background-size: cover;
+      background-attachment: fixed;
+      color: black;
+      font-family: Trebuchet MS;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    h2 {
+      text-align: center;
+      color: #f58754;
+    }
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+    table th, table td {
+      border: 2px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+    table th {
+      background-color: #f57224;
+      color: white;
+    }
+    table td {
+      background-color: #1a237e;
+      color: #f58754;
+    }
+    .actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .actions a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #f57224;
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+      margin: 10px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .actions a:hover {
+      background-color: #1a237e;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2><%= @team1.name %> V/S <%= @team2.name %></h2>
+    <% if @match.t1_r > @match.t2_r %>
+    	<h4 style="color: #1a237e; text-align: center;"><%= @match.team1 %> won the match.</h4>
+  	<% else %>
+    	<h4 style="color: #1a237e; text-align: center;"><%= @match.team2 %> won the match.</h4>
+  	<% end %>
+    <table>
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Runs Scored</th>
+          <th>Overs Played</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @team1.name %></td>
+          <td><%= @match.t1_r %></td>
+          <td><%= @match.t1_o %></td>
+        </tr>
+        <tr>
+          <td><%= @team2.name %></td>
+          <td><%= @match.t2_r %></td>
+          <td><%= @match.t2_o %></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="actions">
+      <%= link_to 'Back to Matches', matches_path, class: 'action-button' %>
+    </div>
+  </div>
+</body>
+</html>

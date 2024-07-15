@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>iLead Cricket Auction</title>
+  <title>iLead Cricket Auction: Team Details</title>
   <style type="text/css">
     body {
       background: linear-gradient(to top, #f58754, #1a237e);
-      background-size: cover; /* Ensures the background covers the entire viewport */
-      background-attachment: fixed; /* Keeps the background fixed while scrolling */
+      background-size: cover;
+      background-attachment: fixed;
       color: black;
       font-family: Trebuchet MS;
       margin: 0;
       padding: 0;
     }
-    h5{
-      text-align: center;
-
-    }
     .container {
       max-width: 600px;
       margin: 20px auto;
-      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for content */
+      background-color: rgba(255, 255, 255, 0.8);
       padding: 20px;
       border: 2px solid #ddd;
       border-radius: 8px;
@@ -29,9 +25,15 @@
       text-align: center;
       color: #f58754;
     }
-    p {
-      margin-bottom: 10px;
-      font-size: 16px;
+    .team-details {
+      margin-top: 20px;
+    }
+    .team-details th, .team-details td {
+      padding: 10px;
+      text-align: left;
+    }
+    .team-details th {
+      width: 50%;
     }
     .actions {
       text-align: center;
@@ -54,16 +56,66 @@
 </head>
 <body>
   <div class="container">
-    <h2>Team <%= @team.name %></h2>
+    <h2>Team Details: <%= @team.name %></h2>
 
-    <p><strong>ID:</strong> <%= @team.id %></p>
-    <p><strong>Name:</strong> <%= @team.name %></p>
-    <p><strong>Purse:</strong> ₹<%= @team.purse %></p>
-    <p><strong>Total Players:</strong> <%= @team.total_players %></p>
+    <table class="team-details">
+      <tr>
+        <th>ID:</th>
+        <td><%= @team.id %></td>
+      </tr>
+      <tr>
+        <th>Name:</th>
+        <td><%= @team.name %></td>
+      </tr>
+      <tr>
+        <th>Purse:</th>
+        <td>₹<%= @team.purse %></td>
+      </tr>
+      <tr>
+        <th>Total Players:</th>
+        <td><%= @team.total_players %></td>
+      </tr>
+      <tr>
+        <th>Matches Played:</th>
+        <td><%= @team.matches_played %></td>
+      </tr>
+      <tr>
+        <th>Matches Won:</th>
+        <td><%= @team.matches_won %></td>
+      </tr>
+      <tr>
+        <th>Matches Lost:</th>
+        <td><%= @team.matches_lost %></td>
+      </tr>
+      <tr>
+        <th>Runs Scored:</th>
+        <td><%= @team.runs_scored %></td>
+      </tr>
+      <tr>
+        <th>Runs Given:</th>
+        <td><%= @team.runs_given %></td>
+      </tr>
+      <tr>
+        <th>Overs Played:</th>
+        <td><%= @team.overs_played %></td>
+      </tr>
+      <tr>
+        <th>Overs Bowled:</th>
+        <td><%= @team.overs_bowled %></td>
+      </tr>
+      <tr>
+        <th>NRR:</th>
+        <td><%= @team.nrr %></td>
+      </tr>
+      <tr>
+        <th>Points:</th>
+        <td><%= @team.points %></td>
+      </tr>
+    </table>
 
     <div class="actions">
-      <%= link_to 'Edit', edit_team_path(@team), class: 'action-button' %> |
-      <%= link_to 'Back', teams_path, class: 'action-button' %>
+      <%= link_to 'Back to Points Table', teams_path, class: 'action-button' %>
+      <%= link_to 'Edit Team', edit_team_path(@team), class: 'action-button' %>
     </div>
   </div>
 </body>

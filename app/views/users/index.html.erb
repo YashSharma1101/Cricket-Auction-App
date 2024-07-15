@@ -427,7 +427,7 @@ p.animation-text:hover {
 		                <p class="current-price">Current Bid: ₹<span class="price"><%= user.price > 0 ? user.price : base_price %></span></p>
 		                <%= form.submit 'Confirm Bid', class: 'btn btn-primary ml-auto' %>
 		              </div>
-		            	<%= form.select :team, options_for_select(Team.pluck(:name), selected: user.team), { prompt: 'Select Team', class: 'form-control' } %>
+		            	<%= form.select :team, options_for_select(Team.order(:id).pluck(:name), selected: user.team), { prompt: 'Select Team', class: 'form-control' } %>
 		            <% end %>
 		          <% end %>
 		        </div>
@@ -444,7 +444,7 @@ p.animation-text:hover {
 		      </div>
 		    </div>
 		    <div class="teams-data">
-		      <% half_teams = Team.pluck(:name, :purse, :total_players).each_slice((Team.count / 2.0)).to_a %>
+		      <% half_teams = Team.order(:id).pluck(:name, :purse, :total_players).each_slice((Team.count / 2.0)).to_a %>
 
 		      <table class="teams-table">
 		        <tr>
@@ -479,15 +479,30 @@ p.animation-text:hover {
 		    		<tr>
 		    			<th>Total Players</th> 
 		    			<th>Sold Players</th>
-		    			<th>Yet to be Auctioned</th>
+		    			<th>Not Sold/Auctioned</th>
 		    		</tr>
 		    		<tr>
 		    			<td><%= User.count %></td>
 		    			<td><%=Team.pluck(:total_players).sum%></td>
-		    			<td><%= @users.total_pages - @users.current_page %></td>
-		    		</tr>		
+		    			<td><%= @users.where(team: nil).count %></td>
+		    		</tr>	
+		    		<%# comment the below code for more than 6 teams %>
+		    		<tr>
+		    			<th colspan="3">Quick Links</th>
+		    		</tr>
+		    		<tr>
+			    		<td>
+							  <%= link_to 'Home', root_path, style: "color: #000;" %>
+							</td>		
+							<td>
+							  <%= link_to 'Squads', teams_data_path, style: "color: #000;" %>
+							</td>		
+							<td>
+							  <%= link_to 'Players', admin_users_path, style: "color: #000;" %>
+							</td>
+		    		</tr>
+		    		<%# comment till here from above %>
 		    	</table>
-		    	<%# <p style="color: white; font-size: 1.0em;">Auction App | Developed By: Yash Sharma</p> %>
 		    </div>
 		    	<p style="color: white; font-size: 1.0em;"> <marquee width="100%" behavior="scroll" scrollamount="10">
      <%unless @teams_with_latest_users.empty? %>

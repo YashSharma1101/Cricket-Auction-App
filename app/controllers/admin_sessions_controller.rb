@@ -47,7 +47,7 @@ class AdminSessionsController < ApplicationController
   def update
 		@team = Team&.first
 		@users = User.where(team: @team.name)
-		if Team.update_all(purse: @team.purse + @users.sum(:price), total_players: 0) && User.update_all(team: nil, price: 0, count: 0, interested_commentary: "unsure")
+		if Team.update_all(purse: @team.purse + @users.sum(:price), total_players: 0, matches_played: '0', matches_won: '0', matches_lost: '0', runs_scored: '0', runs_given: '0', overs_bowled: 0.0, overs_played: 0.0, nrr: 0.0, points: 0) && User.update_all(team: nil, price: 0, count: 0, interested_commentary: "unsure") && Match.delete_all
 		  flash[:notice] = 'Success! the auction information has been reset.'
 		else
 		  flash[:alert] = 'Unable to reset auction data.'

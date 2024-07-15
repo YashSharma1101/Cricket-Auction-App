@@ -69,17 +69,21 @@
 <body>
   <div class="email-container">
     <div class="report-card">
+      <center>
+        <%= image_tag attachments['ilead.png'].url, alt: 'Logo', class: 'photo', style:"height: 15%; width: 25%; color: red;" %>
+      </center>
+
       <h2>Hello <b><%= @user.full_name %></b>, This is your auction report</h2>
       
       <div class="player-photo">
         <% if @user.photo_attachment.attached? %>
           <%#= image_tag @user.photo_attachment, alt: "#{@user.full_name} Photo" %>
         <% else %>
-          <p class="no-photo">No photo attached for this player.</p>
+          <%# <p class="no-photo">No photo attached for this player.</p> %>
         <% end %>
       </div>
 
-      <h2>Your are purchased by <b><%= @user.team %></b> for <b>₹<%= @user.price %></h2>
+      <h2>You are purchased by <b><%= @user.team %></b> for <b>₹<%= @user.price %></h2>
       
       <h2>Your Team Details</h2>
 

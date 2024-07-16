@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'ffi', '~> 1.14.2'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -64,3 +65,5 @@ gem 'rename'
 gem 'jimeh-solargraph', '0.40.4.1'
 gem 'htmlbeautifier'
 gem 'erb_lint'
+gem 'cloudinary'
+gem 'activestorage-cloudinary-service'

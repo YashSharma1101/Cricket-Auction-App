@@ -386,6 +386,7 @@ p.animation-text:hover {
 	<%#= flash[:alert]%>
 
 		<div class="user-cards">
+			<% if Team.all.present? && User.all.present? %>
 		  <% @users.each do |user| %>
 		    <div class="user-info-card">
 		      <div class="player-photo">
@@ -418,8 +419,6 @@ p.animation-text:hover {
 		          <% unless user.team.present? && user.price != 0 %>
 		            <button id="startBidButton"  class="bidButton">Start Bidding</button>
 		            <%= form_for user, url: user_path(user), method: :patch do |form| %>
-		              <%#= form.select :team, options_for_select(["Team A", "Team B", "Team C"], selected: user.team), { prompt: 'Select Team', class: 'form-control' } %>
-
 		              <%= form.hidden_field :price, id: 'user_price' %> 
 		              <%= hidden_field_tag(:page, params[:page]) if params[:page] %>
 		              <div class="flex-container">
@@ -440,7 +439,6 @@ p.animation-text:hover {
 		            </p>
 		          <% end %>
 		        </div>
-		        <%# <p style="color: white; font-size: 1.2em;">Developed By: Yash Sharma</p> %>
 		      </div>
 		    </div>
 		    <div class="teams-data">
@@ -455,7 +453,6 @@ p.animation-text:hover {
 
 		        <% half_teams.each_with_index do |teams, index| %>
 		          <% teams.each do |team_data| %>
-		          <%#byebug%>
 		            <tr>
 		              <td><%= team_data[0] %></td>
 		              <td>₹<%= team_data[1] %></td>
@@ -539,6 +536,9 @@ p.animation-text:hover {
 		    <button class="primary" id="teamSelectionPopupConfirm">Confirm</button>
 		    <button class="secondary" id="teamSelectionPopupCancel">Cancel</button>
 		  </div>
+		 <%else%>
+		 	<h2 style="color: #f58754; margin-top: 200px;">Make sure players and teams are present to start the auction!</h2>
+		 <% end %>
 		</div>
 	</body>
 </html>
@@ -658,11 +658,11 @@ p.animation-text:hover {
 	  }); 
 	</script>
 
-<%# 	<div> 
-	   <h3>Import User Data</h3>
-	  <%= form_tag import_users_path, multipart: true do %>
+ 	<%# <div>  %>
+	   <%# <h3>Import User Data</h3> %>
+	  <%#= form_tag import_users_path, multipart: true do %>
 	    <%#= csrf_meta_tags %>
 	    <%#= file_field_tag :file %>
 	    <%#= submit_tag "Import CSV" %>
 	  <%# end %>
-	<%# </div>  %> 
+	<%# </div>    %>
